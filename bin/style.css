@@ -1,0 +1,42 @@
+/* Set the font family and size */
+* {
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+}
+
+/* Center the game element */
+#game {
+  margin: 0 auto;
+  width: 400px;
+}
+
+/* Set the size, background color and border of the cards */
+.card {
+  height: 100px;
+  width: 100px;
+  background-color: lightblue;
+  border: 2px solid black;
+}
+
+/* Use flexbox to arrange the cards in a grid */
+#game {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Use transform and transition to flip the cards */
+.card {
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+/* Hide the back of the cards when flipped */
+.card.flipped,
+.card.matched {
+  transform: rotateY(180deg);
+}
+
+/* Change the background color of the matched cards */
+.card.matched {
+  background-color: lightgreen;
+}
