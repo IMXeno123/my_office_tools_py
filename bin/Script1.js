@@ -9,8 +9,7 @@ var images = [
     "🐻",
     "🐼",
     "🐨",
-    "😹",
-    "👽"
+    "😹"
 ];
 
 // Duplicate the images to make pairs
