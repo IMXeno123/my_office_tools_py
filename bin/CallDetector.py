@@ -10,7 +10,7 @@ def umbrella():
     if i!=1:
         print("Hi! I'm an umbrella.")
     i = 1
-    weather = str.upper(input("Is it raining outside right now?\nType 'T'or'F"))
+    weather = str.upper(input("Is it raining outside right now?\nType 'T'or'F: "))
     if weather == "T":
         print("Your choice is T. So it's raining!")
         return True
