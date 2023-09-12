@@ -24,6 +24,7 @@ while True:
                 old_text = re.compile(input("請輸入需要查找內容的正則表達式： \ntip:開頭可以加(?sm)等以修改匹配行為！\n"))
                 new_text = input("請輸入需要替換的內容，支持多行文字, 換行請用‘\\n’表示： ").replace("\\n", "\n")
         else:
+            print("Bye~~~")
             exit()
         while True:
             if directory:
