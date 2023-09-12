@@ -51,7 +51,10 @@ while True:
                     filepath = os.path.join(root, filename)
                     with open(filepath, "r", encoding="utf-8") as f:
                         content = f.read()
-                    content = re.sub(old_text, new_text, content)
+                    if start == 1:
+                        content = re.sub(old_text, new_text, content, flags=re.M|re.S)
+                    else:
+                        content = re.sub(old_text, new_text, content)
                     with open(filepath, "w", encoding="utf-8") as f:
                         f.write(content)
     except Exception as error:
