@@ -7,9 +7,7 @@ new_text = """jjj
 bbb
 ccc"""
 
-
 directory = "E:/Downloads/pics/md"
-
 
 for root, dirs, files in os.walk(directory):
     for filename in files:
