@@ -1,17 +1,14 @@
-﻿# 导入re模块，用于正则表达式匹配和替换
+﻿
 import re
-# 导入os模块，用于操作文件和目录
 import os
 
-# 定义要替换的原始多行文字和目标多行文字
-old_text = """你好吗？
-我很好！"""
-new_text = """你吃饭了么？
-
-我吃了！你呢！"""
+old_text = """sdaf"""
+new_text = """jjj
+bbb
+ccc"""
 
 # 定义要搜索修改的目录
-directory = "/user/doc/"
+directory = "E:/Downloads/pics/md"
 
 # 用os.walk函数，遍历目录下的所有子目录和文件
 for root, dirs, files in os.walk(directory):
@@ -30,3 +27,4 @@ for root, dirs, files in os.walk(directory):
             with open(filepath, "w", encoding="utf-8") as f:
                 f.write(content)
 
+print("成功！")
