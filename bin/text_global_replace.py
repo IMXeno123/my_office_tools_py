@@ -154,16 +154,18 @@ def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False
                                     old_text = False
                                     continue
                             else:
-                                old_text = re.compile(input("請輸入需要 查找 的正則表達式\ntip:開頭可以加(?sm)等, 以修改匹配行為!\n"))
+                                old_text = input("請輸入需要 查找 的正則表達式\ntip:開頭可以加(?sm)等, 以修改匹配行為!\n")
                                 if old_text != "":
+                                    old_text = re.compile(old_text)
                                     break
                                 else:
                                     old_text = False
                                     print("**未輸入內容**")
                                     continue
                         else:
-                            old_text = re.compile(input("請輸入需要 查找 的正則表達式\ntip:開頭可以加(?sm)等, 以修改匹配行為!\n"))
+                            old_text = input("請輸入需要 查找 的正則表達式\ntip:開頭可以加(?sm)等, 以修改匹配行為!\n")
                             if old_text != "":
+                                old_text = re.compile(old_text)
                                 break
                             else:
                                 old_text = False
@@ -178,7 +180,7 @@ def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False
                     while True:
                         if isMemory == 1:
                             if new_text:
-                                choices_ = input("按 enter 使用已有的多行文字\n輸入 0 重新選擇模式\n輸入其他任意字符串修改替換的多行文字\n")
+                                choices_ = input("按 enter 使用已有的 替換 多行文字\n輸入 0 重新選擇模式\n輸入其他任意字符串修改 替換 多行文字\n")
                                 if choices_ == "":
                                     break
                                 elif choices_ == "0":
