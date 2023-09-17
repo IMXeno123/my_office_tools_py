@@ -115,8 +115,10 @@ def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False
                             content = re.sub(old_text, new_text, content, flags=re.M|re.S)
                             with open(filepath, "w", encoding="utf-8") as f:
                                 f.write(content)
+                print("替換成功!")
             # mode 2
-            elif mode == "2":
+            
+            if mode == "2":
                 # Memory of old_text
                 while True:
                     if isMemory == 1:
@@ -221,8 +223,10 @@ def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False
                             with open(filepath, "w", encoding="utf-8") as f:
                                 f.write(content)
             else:
+                print("---------------------------------------------------------------\nBye~~~")
                 break
     except Exception as error:
         print(print(f"遇到錯誤：{error}"))
         
-sub_by_dir()
+dir_ = "E:/Downloads/pics/md"
+sub_by_dir(directory=dir_)
