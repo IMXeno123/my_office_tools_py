@@ -17,7 +17,7 @@ def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False
                     while True:
                         if isMemory == 1:
                             if old_text:
-                                choices_ = input("按 enter 使用已有的多行文字\n輸入 0 重新選擇模式\n輸入其他任意字符串修改多行文字\n")
+                                choices_ = input("按 enter 使用已有的 查找 多行文字\n輸入 0 重新選擇模式\n輸入其他任意字符串修改 查找 多行文字\n")
                                 if choices_ == "":
                                     break
                                 elif choices_ == "0":
@@ -45,12 +45,13 @@ def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False
                     if isReset:
                         old_text = False
                         new_text = False
+                        isReset = 0
                         break
                     # Memory of new_text
                     while True:
                         if isMemory == 1:
                             if new_text:
-                                choices_ = input("按 enter 使用已有的多行文字\n輸入 0 重新選擇模式\n輸入其他任意字符串修改替換的多行文字\n")
+                                choices_ = input("按 enter 使用已有的 替換 多行文字\n輸入 0 重新選擇模式\n輸入其他任意字符串修改 替換 多行文字\n")
                                 if choices_ == "":
                                     break
                                 elif choices_ == "0":
@@ -78,6 +79,7 @@ def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False
                     if isReset:
                         old_text = False
                         new_text = False
+                        isReset = 0
                         break
                     # Memory of directory
                     while True:
@@ -111,6 +113,7 @@ def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False
                     if isReset:
                         old_text = False
                         new_text = False
+                        isReset = 0
                         break
                     # sub context
                     isMatch = 0
@@ -132,6 +135,8 @@ def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False
                         print("--------------------------------------------------")
                         print(f"有{counts}個檔案替換成功!\n--------------------------------------------------\n")
                         isMatch = 0
+                    else:
+                        print("**未匹配到內容**\n--------------------------------------------------\n")
             # mode 2
             elif mode == "2":
                 while True:
@@ -167,6 +172,7 @@ def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False
                     if isReset:
                         old_text = False
                         new_text = False
+                        isReset = 0
                         break
                     # Memory of new_text
                     while True:
@@ -200,6 +206,7 @@ def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False
                     if isReset:
                         old_text = False
                         new_text = False
+                        isReset = 0
                         break
                     # Memory of directory
                     while True:
@@ -233,6 +240,7 @@ def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False
                     if isReset:
                         old_text = False
                         new_text = False
+                        isReset = 0
                         break
                     # sub context
                     isMatch = 0
@@ -254,6 +262,8 @@ def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False
                         print("--------------------------------------------------")
                         print(f"有{counts}個檔案替換成功!\n--------------------------------------------------\n")
                         isMatch = 0
+                    else:
+                        print("**未匹配到內容**\n--------------------------------------------------\n")
             else:
                 print("--------------------------------------------------\nBye~~~")
                 break
