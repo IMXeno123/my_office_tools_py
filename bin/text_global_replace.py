@@ -129,11 +129,11 @@ def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False
                                     with open(filepath, "w", encoding="utf-8") as f:
                                         f.write(content)
                     if isMatch:
-                        print("")
-                        print(f"有{counts}個檔案替換成功!")
+                        print("--------------------------------------------------")
+                        print(f"有{counts}個檔案替換成功!\n--------------------------------------------------\n")
                         isMatch = 0
             # mode 2
-            if mode == "2":
+            elif mode == "2":
                 while True:
                     # Memory of old_text
                     while True:
@@ -251,11 +251,11 @@ def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False
                                     with open(filepath, "w", encoding="utf-8") as f:
                                         f.write(content)
                     if isMatch:
-                        print("")
-                        print(f"有{counts}個檔案替換成功!")
+                        print("--------------------------------------------------")
+                        print(f"有{counts}個檔案替換成功!\n--------------------------------------------------\n")
                         isMatch = 0
             else:
-                print("---------------------------------------------------------------\nBye~~~")
+                print("--------------------------------------------------\nBye~~~")
                 break
     except Exception as error:
         print(print(f"遇到錯誤：{error}"))
