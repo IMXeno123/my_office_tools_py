@@ -1,4 +1,4 @@
-﻿import re
+import re
 import os
 
 def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False, isMemory:int = 1):
@@ -271,6 +271,5 @@ def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False
                 break
     except Exception as error:
         print(print(f"遇到錯誤：{error}"))
-        
-dir_ = "E:/Downloads/pics/md"
-sub_by_dir(directory=dir_)
+
+sub_by_dir()
