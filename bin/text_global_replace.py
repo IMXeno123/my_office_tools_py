@@ -63,21 +63,21 @@ def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False
                             else:
                                 new_text = input("請輸入需要 替換 的多行文字, 換行請用‘\\n’表示： \n").replace("\\n", "\n")
                                 break
-                                if new_text != "":
-                                    break
-                                else:
-                                    new_text = False
-                                    print("**未輸入內容**")
-                                    continue
+                                # if new_text != "":
+                                #     break
+                                # else:
+                                #     new_text = False
+                                #     print("**未輸入內容**")
+                                #     continue
                         else:
                             new_text = input("請輸入需要 替換 的多行文字, 換行請用‘\\n’表示： \n").replace("\\n", "\n")
                             break
-                            if new_text != "":
-                                break
-                            else:
-                                new_text = False
-                                print("**未輸入內容**")
-                                continue
+                            # if new_text != "":
+                            #     break
+                            # else:
+                            #     new_text = False
+                            #     print("**未輸入內容**")
+                            #     continue
                     if isReset:
                         old_text = False
                         new_text = False
@@ -194,21 +194,21 @@ def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False
                             else:
                                 new_text = input("請輸入需要 替換 的多行文字, 換行請用‘\\n’表示： \n").replace("\\n", "\n")
                                 break
-                                if new_text != "":
-                                    break
-                                else:
-                                    new_text = False
-                                    print("**未輸入內容**")
-                                    continue
+                                # if new_text != "":
+                                #     break
+                                # else:
+                                #     new_text = False
+                                #     print("**未輸入內容**")
+                                #     continue
                         else:
                             new_text = input("請輸入需要 替換 的多行文字, 換行請用‘\\n’表示： \n").replace("\\n", "\n")
                             break
-                            if new_text != "":
-                                break
-                            else:
-                                new_text = False
-                                print("**未輸入內容**")
-                                continue
+                            # if new_text != "":
+                            #     break
+                            # else:
+                            #     new_text = False
+                            #     print("**未輸入內容**")
+                            #     continue
                     if isReset:
                         old_text = False
                         new_text = False
