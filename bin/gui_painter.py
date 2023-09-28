@@ -22,22 +22,21 @@ class App(tk.Frame):
         self.canvas_ = tk.Canvas(root, width=self.win_width, height=self.win_height, bg=self.bgcolor)
         self.canvas_.pack()
         for i in self.bt_name:
-            a = tk.Button(root, text=i, name=i)
-            a.pack(side="left", padx="10")
-            a.bind_class("Button","<1>",self.eventManager)
-            self.bt_list.append(a)
+            bt = tk.Button(root, text=i, name=i)
+            bt.pack(side="left", padx="10")
+            bt.bind_class("Button","<1>",self.eventManager)
+            self.bt_list.append(bt)
             
     def eventManager(self, event):
         # for a in self.bt_list:
         name = event.widget.winfo_name()
-            # print(name)
         if name == "strline":
-            self.canvas_.bind("<B1-Motion>", self.draw_strline)
+            self.canvas_.bind("<B1-Motion>", self.drawStrLine)
             
         else:
             print(name)
             
-    def draw_strline(self, event):
+    def drawStrLine(self, event):
         self.canvas_.create_line(self.x,self.y,event.x,event.y,fill=self.fgcolor)
 
 
