@@ -1,7 +1,5 @@
-import re
-myText = "abc"
 
 
-
-if re.search("abc",myText):
-    print("m")
+bt_name = ["start", "pen", "rect", "clear", "eraser"]
+for i in bt_name:
+    print(i)
