@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter.colorchooser import askcolor
-from turtle import width
 
 class App(tk.Frame):
     def __init__(self, master=None):
