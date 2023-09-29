@@ -96,7 +96,7 @@ class App(tk.Frame):
         
     def drawOval(self, event):
         self.startDraw(event)
-        self.lastStrLine = self.canvas_.create_oval(self.x,self.y,event.x,event.y,outline=self.fgcolor)
+        self.lastStrLine = self.canvas_.create_oval(self.x,self.y,event.x,event.y,outline=self.fgcolor,width=self.pen_size)
         
     def drawCurve(self, event):
         self.startDraw(event)
@@ -119,7 +119,7 @@ class App(tk.Frame):
             self.fgcolor = "#ff0000"
             
     def getPenSize(self):
-        self.pen_size = int(self.text_box.get(1.0,"end"))
+        self.pen_size = int(self.text_box.get(1.0,tk.END))
 
 
 
