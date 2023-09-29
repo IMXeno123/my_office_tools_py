@@ -1,5 +1,3 @@
+import text_global_replace as tgr
 
-
-bt_name = ["start", "pen", "rect", "clear", "eraser"]
-for i in bt_name:
-    print(i)
+tgr.sub_by_dir()

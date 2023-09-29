@@ -276,4 +276,3 @@ def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False
     except Exception as error:
         print(print(f"遇到錯誤：{error}"))
 
-sub_by_dir()
