@@ -3,7 +3,7 @@ from tkinter.colorchooser import askcolor
 
 class App(tk.Frame):
     def __init__(self, master=None):
-        super().__init__(master)
+        self.master = super().__init__(master)
         self.text_box = None
         self.win_width = 900
         self.win_height = 280
