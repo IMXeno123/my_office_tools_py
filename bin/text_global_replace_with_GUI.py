@@ -21,5 +21,5 @@ if __name__ == "__main__":
     root = tk.Tk()
     root.geometry("900x350+200+300")
     root.title("Text Global Replace GUI")
-    app = App(master=root)
+    app = App(root)
     app.mainloop()
