@@ -1,8 +1,13 @@
 import tkinter as tk
 
+def menu_add_command_1(master, label_:str):
+    if label_ == "Exit":
+        master.add_command(label=label_, command=root.quit)
+    else:
+        master.add_command(label=label_)
 def menu_add_command(master, label_):
     master.add_command(label=label_)
-
+    
 root = tk.Tk()
 root.title("Notepad")
 root.geometry("800x500+100+100")
@@ -13,7 +18,7 @@ menu = tk.Menu(root, tearoff=False)
 # file
 file_menu = tk.Menu(menu, tearoff=False)
 for i in ["New", "Open", "Save", "Exit"]:
-    menu_add_command(file_menu, i)
+    menu_add_command_1(file_menu, i)
     if i == "Save":
         t_menu = tk.Menu(file_menu, tearoff=False)
         for j in ["Save as .txt","Save as .md", "Save as .*"]:
