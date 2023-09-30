@@ -3,7 +3,7 @@ import tkinter as tk
 
 class App(tk.Frame):
     def __init__(self, master=None):
-        self.master = super().__init__(master)
+        super().__init__(master)
         self.text_box = None
         self.createWidget()
 
@@ -15,7 +15,7 @@ class App(tk.Frame):
 
 
         bt_fileIn.place(x=10, y=10)
-        textBox_fileIn.place(x=10+90, y=10)
+        textBox_fileIn.place(x=100, y=10)
 
 if __name__ == "__main__":
     root = tk.Tk()
