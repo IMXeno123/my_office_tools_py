@@ -1,9 +1,10 @@
 ﻿functions = {}
 
-def functionExit():
-    print("bye")
-    exit()
-    
 for i in ["Exit"]:
-    print("dd")
-    exec(f'function{i}')
+    functions [f'function{i}'] = f'''
+def function{i}():
+    print("Hi")
+function{i}()
+'''
+    
+exec(functions[f"function{i}"])
