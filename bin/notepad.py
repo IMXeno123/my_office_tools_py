@@ -10,6 +10,7 @@ def menu_add_command(master, label_):
     
 root = tk.Tk()
 root.title("Notepad")
+root.attributes("-alpha", 0.7)
 root.geometry("800x500+100+100")
 
 # main menu
