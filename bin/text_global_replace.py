@@ -1,7 +1,7 @@
 import re
 import os
 
-def sub_by_dir(directory:str = False, old_text:str = False, new_text:str = False, isMemory:int = 1):
+def sub_by_dir(directory:str|bool = False, old_text:str|bool = False, new_text:str|bool = False, isMemory:int = 1):
     """
     Need import re and os modules!
     Only support txt md.
