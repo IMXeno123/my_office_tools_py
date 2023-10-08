@@ -9,11 +9,36 @@ class mainGui(ttk.Frame):
     def __init__(self, master):
         super().__init__(master, padding=(10))
         self.pack(fill=BOTH, expand=YES)
-        btn = ttk.Button(self, text="test")
-        btn.pack()
-        print(PATH)
+        self.style = ttk.Style()
+        self.themeSelection()
+        
 
+    def themeSelection(self):
+        theme_names = self.style.theme_names()
+        theme_selection = ttk.Frame(self, padding=(10, 10, 10, 0))
+        theme_selection.pack(fill=X, expand=YES)
+        lbl = ttk.Label(theme_selection, text="Select a theme:")
+        self.theme_cbo = ttk.Combobox(
+            master=theme_selection,
+            text=self.style.theme.name,
+            values=theme_names,
+        )
+        self.theme_cbo.pack(padx=10, side=RIGHT)
+        self.theme_cbo.current(theme_names.index(self.style.theme.name))
+        lbl.pack(side=RIGHT)
+        self.cbo = ttk.Combobox(
+            self,
+            text=self.style.theme.name,
+            values=theme_names,
+            exportselection=False
+        )
+        self.theme_cbo.bind('<<ComboboxSelected>>', self.change_theme)
+        
 
+    def change_theme(self, e):
+            t = self.cbo.get()
+            self.style.theme_use(t)
+            self.theme_cbo.selection_clear()    
 
 
 
