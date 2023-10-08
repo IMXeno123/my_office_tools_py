@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\bin"
+    "\\bin",
+    "\\bin\\GUI"
   ],
-  "SelectedNode": "\\bin\\notepad.py",
+  "SelectedNode": "\\bin\\GUI\\mainGui.py",
   "PreviewInSolutionExplorer": false
 }
