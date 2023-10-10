@@ -1,4 +1,6 @@
-import ttkbootstrap as ttk
+﻿import ttkbootstrap as ttk
+import re
+import os
 from logs import *
 from pathlib import Path
 from ttkbootstrap.dialogs import Messagebox
@@ -15,8 +17,8 @@ class mainGui(ttk.Frame):
         self.style = ttk.Style()
         _path = Path().absolute().as_posix()
         self.path_var = ttk.StringVar(value=_path)
-        self.find_txt_var = ttk.StringVar(value="")
-        self.repalce_txt_var = ttk.StringVar(value="")
+        self.find_txt_var = ttk.StringVar(value="") # find
+        self.repalce_txt_var = ttk.StringVar(value="") # replace
         _content = get_log(env_path)
         self.log_txt_var = ttk.StringVar(value=_content)
         self.createWidget()
@@ -103,7 +105,7 @@ class mainGui(ttk.Frame):
             master=self.right_frame,
             # height=AUTO,
             width=60,
-            wrap='none'
+            wrap='word'
             )
         self.log_txt.insert(END, self.log_txt_var.get())
         self.log_txt.pack(
@@ -128,8 +130,39 @@ class mainGui(ttk.Frame):
         if path:
             self.path_var.set(path)
             # output log
-            log_ = creat_log(f"[info] Set path: {self.path_var.get()}", env_path)
+            log_ = creat_log(f'[info] Set path: "{self.path_var.get()}"', env_path)
             self.log_txt.insert(END, log_)
+       
+    def subByDir(directory:str, old_text:str, new_text:str):
+        """
+        Need import re and os modules!
+        Only support txt md.
+        """
+        try:       
+            # sub context
+            isMatch = 0
+            counts = 0
+            for root, dirs, files in os.walk(directory):
+                for filename in files:
+                    if filename.endswith(".md") or filename.endswith(".txt"):
+                        filepath = os.path.join(root, filename)
+                        with open(filepath, "r", encoding="utf-8") as f:
+                            content = f.read()
+                        if re.search(old_text, content, flags=re.M|re.S):
+                            isMatch = 1
+                            creat_log(f"[info] \"{filepath}\"", directory)
+                            counts += 1
+                            content = re.sub(old_text, new_text, content, flags=re.M|re.S)
+                            with open(filepath, "w", encoding="utf-8") as f:
+                                f.write(content)
+            if isMatch:
+                print("--------------------------------------------------")
+                print(f"有{counts}個檔案替換成功!\n--------------------------------------------------\n")
+                isMatch = 0
+            else:
+                print("**未匹配到內容**\n--------------------------------------------------\n")
+        except Exception as error:
+            print(print(f"遇到錯誤：{error}"))
 
 if __name__ == "__main__":
     app = ttk.Window(
