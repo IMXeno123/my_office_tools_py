@@ -10,12 +10,21 @@ class mainGui(ttk.Frame):
         super().__init__(master, padding=(10))
         self.pack(fill=BOTH, expand=YES)
         self.style = ttk.Style()
-        self.themeSelection()
+        self.createWidget()
+        
+    def createWidget(self):
         
 
+        self.left_frame = ttk.Frame(self)
+        self.left_frame.pack(side=LEFT)
+        self.right_frame = ttk.Frame(self)
+        self.right_frame.pack(side=LEFT)
+        self.leftFrame()
+        self.rightFrame()
+        
     def themeSelection(self):
         theme_names = self.style.theme_names()
-        theme_selection = ttk.Frame(self, padding=(10, 10, 10, 0))
+        theme_selection = ttk.Frame(self.right_frame, padding=(10, 10, 10, 0))
         theme_selection.pack(fill=X, expand=YES)
         lbl = ttk.Label(theme_selection, text="Select a theme:")
         self.theme_cbo = ttk.Combobox(
@@ -33,13 +42,20 @@ class mainGui(ttk.Frame):
             exportselection=False
         )
         self.theme_cbo.bind('<<ComboboxSelected>>', self.change_theme)
-        
 
-    def change_theme(self, e):
+    def change_theme(self, event):
             t = self.cbo.get()
             self.style.theme_use(t)
             self.theme_cbo.selection_clear()    
 
+    def leftFrame(self):
+        ttk.Label(self.left_frame, text="Path to walk: ").pack(anchor=N)
+        ttk.Entry(self.left_frame, textvariable="")
+        ttk.Button(self.left_frame, bootstyle="outline", text="text").pack()
+        ttk.Separator(self.left_frame, orient="vertical").pack()
+
+    def rightFrame(self):
+        self.themeSelection()
 
 
 
