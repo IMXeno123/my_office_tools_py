@@ -22,12 +22,13 @@ class mainGui(ttk.Frame):
     def createWidget(self):
         self.left_frame = ttk.Frame(self)
         self.left_frame.pack(side=LEFT)
+        seprator_ = ttk.Separator(self, orient="vertical")
+        seprator_.pack(side=LEFT, fill=Y, expand=YES, anchor=N, padx=5)
         self.mid_frame = ttk.Frame(self)
         self.mid_frame.pack(side=LEFT)
         self.right_frame = ttk.Frame(self)
         self.right_frame.pack(side=LEFT)
         self.leftFrame()
-        self.midFrame()
         self.rightFrame()
         
     def themeSelection(self):
@@ -70,6 +71,7 @@ class mainGui(ttk.Frame):
         search_txt.pack(
             anchor=N,
             pady=5,
+            padx=5,
             fill=BOTH,
             expand=YES
             )
@@ -86,12 +88,10 @@ class mainGui(ttk.Frame):
         repalce_txt.pack(
             anchor=N,
             pady=5,
+            padx=5,
             fill=BOTH,
             expand=YES
             )
-
-    def midFrame(self):
-        ttk.Separator(self.mid_frame, orient="vertical").pack(fill=X, expand=YES)
         
     def rightFrame(self):
         self.themeSelection()
@@ -99,7 +99,7 @@ class mainGui(ttk.Frame):
     def createFormEntry(self, variable):
         container = ttk.Frame(self.left_frame)
         container.pack(fill=X, expand=YES, pady=5)
-        ent = ttk.Entry(master=container, textvariable=variable)
+        ent = ttk.Entry(master=container, textvariable=variable, width=100)
         ent.pack(side=LEFT, padx=5, fill=X, expand=YES)
         btn = ttk.Button(master=container, text="Browse", command=self.onBrowse)
         btn.pack(side=LEFT, padx=5)
@@ -110,25 +110,6 @@ class mainGui(ttk.Frame):
             self.path_var.set(path)
             creat_log(f"[info] path: {self.path_var.get()}", env_path)
             
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 if __name__ == "__main__":
     app = ttk.Window(
