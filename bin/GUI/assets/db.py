@@ -1,5 +1,5 @@
 import json
-from logs import creat_log
+from assets.logs import creat_log
 from pathlib import Path
 
 

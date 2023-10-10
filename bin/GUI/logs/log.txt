@@ -1,0 +1,4 @@
+2023-10-10 14:03:36 [info] Set path: "E:/3D Objects/testfolder/NewFolder"
+2023-10-10 14:10:48 [info] "E:\3D Objects\testfolder\NewFolder\1.txt"
+2023-10-10 14:10:48 [info] 有1個檔案替換成功!
+2023-10-10 14:10:48 [info] 替換成功!
