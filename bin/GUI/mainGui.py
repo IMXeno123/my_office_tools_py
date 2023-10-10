@@ -15,14 +15,19 @@ class mainGui(ttk.Frame):
         self.style = ttk.Style()
         _path = Path().absolute().as_posix()
         self.path_var = ttk.StringVar(value=_path)
+        self.search_txt_var = ttk.StringVar(value="")
+        self.repalce_txt_var = ttk.StringVar(value="")
         self.createWidget()
         
     def createWidget(self):
         self.left_frame = ttk.Frame(self)
         self.left_frame.pack(side=LEFT)
+        self.mid_frame = ttk.Frame(self)
+        self.mid_frame.pack(side=LEFT)
         self.right_frame = ttk.Frame(self)
         self.right_frame.pack(side=LEFT)
         self.leftFrame()
+        self.midFrame()
         self.rightFrame()
         
     def themeSelection(self):
@@ -55,9 +60,40 @@ class mainGui(ttk.Frame):
         ttk.Label(self.left_frame, text="Path to walk: ").pack(fill=X, anchor=N)
         self.createFormEntry(self.path_var)
         ttk.Label(self.left_frame, text="Search of contents: ").pack(fill=X, anchor=N)
+        search_txt = ttk.Text(
+            master=self.left_frame,
+            height=5,
+            width=50,
+            wrap='none'
+            )
+        search_txt.insert(END, self.search_txt_var.get())
+        search_txt.pack(
+            anchor=N,
+            pady=5,
+            fill=BOTH,
+            expand=YES
+            )
+        
+        ttk.Label(self.left_frame, text="Replace of contents: ").pack(fill=X, anchor=N)
+        
+        repalce_txt = ttk.Text(
+            master=self.left_frame,
+            height=5,
+            width=50,
+            wrap='none'
+            )
+        repalce_txt.insert(END, self.repalce_txt_var.get())
+        repalce_txt.pack(
+            anchor=N,
+            pady=5,
+            fill=BOTH,
+            expand=YES
+            )
 
+    def midFrame(self):
+        ttk.Separator(self.mid_frame, orient="vertical").pack(fill=X, expand=YES)
+        
     def rightFrame(self):
-        ttk.Separator(self.left_frame, orient="vertical").pack()
         self.themeSelection()
         
     def createFormEntry(self, variable):
