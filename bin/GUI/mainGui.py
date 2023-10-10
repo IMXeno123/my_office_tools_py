@@ -29,7 +29,6 @@ class mainGui(ttk.Frame):
         self.path_var = ttk.StringVar(value=path_2)
         self.find_txt_var = ttk.StringVar(value="") # find
         self.repalce_txt_var = ttk.StringVar(value="") # replace
-        # _content = get_log(env_path)
         _content = ""
         self.log_txt_var = ttk.StringVar(value=_content)
         self.createWidget()
