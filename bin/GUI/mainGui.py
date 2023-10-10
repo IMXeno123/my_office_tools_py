@@ -1,8 +1,10 @@
-from pathlib import Path
 import ttkbootstrap as ttk
+from pathlib import Path
+from ttkbootstrap.dialogs import Messagebox
+from tkinter.filedialog import askdirectory
 from ttkbootstrap.constants import *
 
-PATH = Path(__file__).parent
+env_path = Path(__file__).parent
 
 class mainGui(ttk.Frame):
     
@@ -10,11 +12,11 @@ class mainGui(ttk.Frame):
         super().__init__(master, padding=(10))
         self.pack(fill=BOTH, expand=YES)
         self.style = ttk.Style()
+        _path = Path().absolute().as_posix()
+        self.path_var = ttk.StringVar(value=_path)
         self.createWidget()
         
     def createWidget(self):
-        
-
         self.left_frame = ttk.Frame(self)
         self.left_frame.pack(side=LEFT)
         self.right_frame = ttk.Frame(self)
@@ -41,23 +43,36 @@ class mainGui(ttk.Frame):
             values=theme_names,
             exportselection=False
         )
-        self.theme_cbo.bind('<<ComboboxSelected>>', self.change_theme)
+        self.theme_cbo.bind('<<ComboboxSelected>>', self.changeTheme)
 
-    def change_theme(self, event):
+    def changeTheme(self, event):
             t = self.cbo.get()
             self.style.theme_use(t)
             self.theme_cbo.selection_clear()    
 
     def leftFrame(self):
-        ttk.Label(self.left_frame, text="Path to walk: ").pack(anchor=N)
-        ttk.Entry(self.left_frame, textvariable="")
-        ttk.Button(self.left_frame, bootstyle="outline", text="text").pack()
-        ttk.Separator(self.left_frame, orient="vertical").pack()
+        ttk.Label(self.left_frame, text="Path to walk: ").pack(fill=X, anchor=N)
+        self.createFormEntry(self.path_var)
+        ttk.Label(self.left_frame, text="Search of contents: ").pack(fill=X, anchor=N)
 
     def rightFrame(self):
+        ttk.Separator(self.left_frame, orient="vertical").pack()
         self.themeSelection()
+        
+    def createFormEntry(self, variable):
+        container = ttk.Frame(self.left_frame)
+        container.pack(fill=X, expand=YES, pady=5)
+        ent = ttk.Entry(master=container, textvariable=variable)
+        ent.pack(side=LEFT, padx=5, fill=X, expand=YES)
+        btn = ttk.Button(master=container, text="Browse", command=self.onBrowse)
+        btn.pack(side=LEFT, padx=5)
 
-
+    def onBrowse(self):
+        path = askdirectory(title="Browse directory")
+        if path:
+            self.path_var.set(path)
+        # print(self.path_var.get())
+            
 
 
 
