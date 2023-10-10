@@ -38,6 +38,3 @@ class MySqlDatabases():
 
 if __name__ == "__main__":
     my_db = MySqlDatabases()
-    my_db.check_login("jason","123456")
-    print(my_db.all_data())
-    my_db.get_data({"D":1})

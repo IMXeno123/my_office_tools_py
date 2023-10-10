@@ -2,7 +2,7 @@
 import os
 
 
-def subByDir(self, old_text:str, new_text:str):
+def subByDir(self, old_text:str, new_text:str, path:str):
     """
     Need import re and os modules!
     Only support txt md.
@@ -26,7 +26,7 @@ def subByDir(self, old_text:str, new_text:str):
                 if re.search(old_text, content, flags=re.M|re.S):
                     isMatch = 1
                     # log
-                    self.loger_(f"[info] \"{filepath}\"", env_path)
+                    self.loger_(f"[info] \"{filepath}\"", path)
                     counts += 1
                     contents = re.sub(old_text, new_text, content, flags=re.M|re.S)
                     with open(filepath, "w", encoding="utf-8") as f:
@@ -36,11 +36,13 @@ def subByDir(self, old_text:str, new_text:str):
                         print("YES!!!")
     if isMatch:
         # log
-        self.loger_(f"[info] 有{counts}個檔案替換成功!", env_path)
+        log = f"[info] 有{counts}個檔案替換成功!"
         isMatch = 0
+        return log
     else:
         # log
-        self.loger_(f"[info] **未匹配到內容**", env_path)
+        log = f"[info] **未匹配到內容**"
+        return log
                 
     # except Exception as error:
     #     # log

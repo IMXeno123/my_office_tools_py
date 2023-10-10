@@ -1,7 +1,6 @@
 ﻿import ttkbootstrap as ttk
-import re
-import os
 from db import MySqlDatabases
+from SubByDir import subByDir
 from logs import *
 from pathlib import Path
 from ttkbootstrap.dialogs import Messagebox
@@ -13,6 +12,9 @@ db = MySqlDatabases(env_path)
 
 class mainGui(ttk.Frame):
     def __init__(self, master=None):
+        image_files = {
+            "help":""
+            }
         super().__init__(master, padding=(10))
         db.creat_settings()
         self.all_settings = db.all_data()
@@ -68,8 +70,8 @@ class mainGui(ttk.Frame):
     def leftFrame(self):
         ttk.Label(self.left_frame, text="Path to walk : ").pack(fill=X, anchor=N)
         self.createFormEntry(self.path_var)
-        ttk.Label(self.left_frame, text="Find : ").pack(fill=X, anchor=N)
-        ttk.Label(self.left_frame, text="Tip: 正則表達式的開頭可以加(?sm)等, 以修改匹配行為!").pack(fill=X, anchor=N)
+        ttk.Label(self.left_frame, text="Find : ").pack(side=LEFT, fill=X, anchor=N)
+        ttk.Button(self.left_frame, image="").pack(side=LEFT, anchor=N)
         find_txt = ttk.Text(
             master=self.left_frame,
             height=6,
@@ -109,6 +111,7 @@ class mainGui(ttk.Frame):
 
     def rightFrame(self):
         self.themeSelection()
+        ttk.Label(self.right_frame, text="Logs in here: ").pack(fill=X, anchor=N)
         self.log_txt = ttk.Text(
             master=self.right_frame,
             width=60,
@@ -140,7 +143,7 @@ class mainGui(ttk.Frame):
             # log
             self.loger_(f'[info] Set path: "{self.path_var.get()}"', env_path)
        
-    def loger_(self, log, path=False):
+    def loger_(self, log, path:str|bool=False):
         if not path:
             path = env_path
         log_ = creat_log(log, path)
