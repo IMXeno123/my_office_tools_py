@@ -17,6 +17,8 @@ class mainGui(ttk.Frame):
         self.path_var = ttk.StringVar(value=_path)
         self.find_txt_var = ttk.StringVar(value="")
         self.repalce_txt_var = ttk.StringVar(value="")
+        _content = get_log(env_path)
+        self.log_txt_var = ttk.StringVar(value=_content)
         self.createWidget()
         
     def createWidget(self):
@@ -97,6 +99,21 @@ class mainGui(ttk.Frame):
 
     def rightFrame(self):
         self.themeSelection()
+        self.log_txt = ttk.Text(
+            master=self.right_frame,
+            # height=AUTO,
+            width=60,
+            wrap='none'
+            )
+        self.log_txt.insert(END, self.log_txt_var.get())
+        self.log_txt.pack(
+            side=LEFT,
+            anchor=N,
+            pady=5,
+            padx=5,
+            fill=BOTH,
+            expand=YES
+            )
         
     def createFormEntry(self, variable):
         container = ttk.Frame(self.left_frame)
@@ -110,8 +127,9 @@ class mainGui(ttk.Frame):
         path = askdirectory(title="Browse directory")
         if path:
             self.path_var.set(path)
-            creat_log(f"[info] path: {self.path_var.get()}", env_path)
-            
+            # output log
+            log_ = creat_log(f"[info] Set path: {self.path_var.get()}", env_path)
+            self.log_txt.insert(END, log_)
 
 if __name__ == "__main__":
     app = ttk.Window(
