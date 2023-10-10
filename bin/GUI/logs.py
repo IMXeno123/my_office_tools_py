@@ -3,8 +3,8 @@ from pathlib import Path
 
 
 def creat_log(log, path=".."):
-    # return None
     print(log)
+    return None
     c_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     bool_ = Path(f"{path}/logs/").exists()
     if bool_:
