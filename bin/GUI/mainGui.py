@@ -1,4 +1,5 @@
 ﻿import ttkbootstrap as ttk
+import json
 import re
 import os
 from logs import *
@@ -13,10 +14,10 @@ class mainGui(ttk.Frame):
     
     def __init__(self, master):
         super().__init__(master, padding=(10))
+        self.creat_settings()
         self.pack(fill=BOTH, expand=YES)
         self.style = ttk.Style()
-        _path = Path().absolute().as_posix()
-        self.path_var = ttk.StringVar(value=_path)
+        self.path_var = ttk.StringVar(value="")
         self.find_txt_var = ttk.StringVar(value="") # find
         self.repalce_txt_var = ttk.StringVar(value="") # replace
         _content = get_log(env_path)
@@ -96,14 +97,18 @@ class mainGui(ttk.Frame):
             fill=BOTH,
             expand=YES
             )
-        btn_replace = ttk.Button(self.left_frame, text="Replace", command=None)
+        
+        btn_replace = ttk.Button(self.left_frame, 
+                                 text="Replace", 
+                                 command=lambda:self.subByDir(self.path_var.get(), 
+                                                              self.find_txt_var.get(), 
+                                                              self.repalce_txt_var.get()))
         btn_replace.pack(side=RIGHT, padx=5)
 
     def rightFrame(self):
         self.themeSelection()
         self.log_txt = ttk.Text(
             master=self.right_frame,
-            # height=AUTO,
             width=60,
             wrap='word'
             )
@@ -129,11 +134,11 @@ class mainGui(ttk.Frame):
         path = askdirectory(title="Browse directory")
         if path:
             self.path_var.set(path)
-            # output log
+            # log
             log_ = creat_log(f'[info] Set path: "{self.path_var.get()}"', env_path)
             self.log_txt.insert(END, log_)
        
-    def subByDir(directory:str, old_text:str, new_text:str):
+    def subByDir(self, directory:str, old_text:str, new_text:str):
         """
         Need import re and os modules!
         Only support txt md.
@@ -150,19 +155,35 @@ class mainGui(ttk.Frame):
                             content = f.read()
                         if re.search(old_text, content, flags=re.M|re.S):
                             isMatch = 1
-                            creat_log(f"[info] \"{filepath}\"", directory)
+                            # log
+                            log_ = creat_log(f"[info] \"{filepath}\"", directory)
+                            self.log_txt.insert(END, log_)
                             counts += 1
                             content = re.sub(old_text, new_text, content, flags=re.M|re.S)
                             with open(filepath, "w", encoding="utf-8") as f:
                                 f.write(content)
             if isMatch:
-                print("--------------------------------------------------")
-                print(f"有{counts}個檔案替換成功!\n--------------------------------------------------\n")
+                # log
+                log_ = creat_log(f"[info] 有{counts}個檔案替換成功!", directory)
+                self.log_txt.insert(END, log_)
                 isMatch = 0
             else:
-                print("**未匹配到內容**\n--------------------------------------------------\n")
+                # log
+                log_ = creat_log(f"[info] **未匹配到內容**", directory)
+                self.log_txt.insert(END, log_)
+                
         except Exception as error:
-            print(print(f"遇到錯誤：{error}"))
+            # log
+            log_ = creat_log(f"[error] 遇到錯誤：{error}", directory)
+            self.log_txt.insert(END, log_)
+            
+    def creat_settings(self, path):
+        if not Path(f"{env_path}/config/config.ini").exists():
+            with open(f"{env_path}/config/config.ini", mode="a", encoding="UTF-8") as f:
+                f.write(f"path_m={path}")
+                
+    def get_settings(self):
+        
 
 if __name__ == "__main__":
     app = ttk.Window(
