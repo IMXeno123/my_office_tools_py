@@ -1,4 +1,5 @@
 import ttkbootstrap as ttk
+from logs import *
 from pathlib import Path
 from ttkbootstrap.dialogs import Messagebox
 from tkinter.filedialog import askdirectory
@@ -71,7 +72,7 @@ class mainGui(ttk.Frame):
         path = askdirectory(title="Browse directory")
         if path:
             self.path_var.set(path)
-        # print(self.path_var.get())
+            creat_log(f"[info] path: {self.path_var.get()}", env_path)
             
 
 
