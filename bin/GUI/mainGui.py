@@ -15,7 +15,7 @@ class mainGui(ttk.Frame):
         self.style = ttk.Style()
         _path = Path().absolute().as_posix()
         self.path_var = ttk.StringVar(value=_path)
-        self.search_txt_var = ttk.StringVar(value="")
+        self.find_txt_var = ttk.StringVar(value="")
         self.repalce_txt_var = ttk.StringVar(value="")
         self.createWidget()
         
@@ -23,7 +23,7 @@ class mainGui(ttk.Frame):
         self.left_frame = ttk.Frame(self)
         self.left_frame.pack(side=LEFT)
         seprator_ = ttk.Separator(self, orient="vertical")
-        seprator_.pack(side=LEFT, fill=Y, expand=YES, anchor=N, padx=5)
+        seprator_.pack(side=LEFT, fill=Y, expand=YES, anchor=W, padx=5)
         self.mid_frame = ttk.Frame(self)
         self.mid_frame.pack(side=LEFT)
         self.right_frame = ttk.Frame(self)
@@ -34,8 +34,8 @@ class mainGui(ttk.Frame):
     def themeSelection(self):
         theme_names = self.style.theme_names()
         theme_selection = ttk.Frame(self.right_frame, padding=(10, 10, 10, 0))
-        theme_selection.pack(fill=X, expand=YES)
-        lbl = ttk.Label(theme_selection, text="Select a theme:")
+        theme_selection.pack(fill=X, expand=YES, anchor=N)
+        lbl = ttk.Label(theme_selection, text="Select a theme : ")
         self.theme_cbo = ttk.Combobox(
             master=theme_selection,
             text=self.style.theme.name,
@@ -58,17 +58,17 @@ class mainGui(ttk.Frame):
             self.theme_cbo.selection_clear()    
 
     def leftFrame(self):
-        ttk.Label(self.left_frame, text="Path to walk: ").pack(fill=X, anchor=N)
+        ttk.Label(self.left_frame, text="Path to walk : ").pack(fill=X, anchor=N)
         self.createFormEntry(self.path_var)
-        ttk.Label(self.left_frame, text="Search of contents: ").pack(fill=X, anchor=N)
-        search_txt = ttk.Text(
+        ttk.Label(self.left_frame, text="Find : ").pack(fill=X, anchor=N)
+        find_txt = ttk.Text(
             master=self.left_frame,
-            height=5,
+            height=6,
             width=50,
             wrap='none'
             )
-        search_txt.insert(END, self.search_txt_var.get())
-        search_txt.pack(
+        find_txt.insert(END, self.find_txt_var.get())
+        find_txt.pack(
             anchor=N,
             pady=5,
             padx=5,
@@ -76,11 +76,11 @@ class mainGui(ttk.Frame):
             expand=YES
             )
         
-        ttk.Label(self.left_frame, text="Replace of contents: ").pack(fill=X, anchor=N)
+        ttk.Label(self.left_frame, text="Replace : ").pack(fill=X, anchor=N)
         
         repalce_txt = ttk.Text(
             master=self.left_frame,
-            height=5,
+            height=8,
             width=50,
             wrap='none'
             )
@@ -92,14 +92,16 @@ class mainGui(ttk.Frame):
             fill=BOTH,
             expand=YES
             )
-        
+        btn_replace = ttk.Button(self.left_frame, text="Replace", command=None)
+        btn_replace.pack(side=RIGHT, padx=5)
+
     def rightFrame(self):
         self.themeSelection()
         
     def createFormEntry(self, variable):
         container = ttk.Frame(self.left_frame)
         container.pack(fill=X, expand=YES, pady=5)
-        ent = ttk.Entry(master=container, textvariable=variable, width=100)
+        ent = ttk.Entry(master=container, textvariable=variable, width=50)
         ent.pack(side=LEFT, padx=5, fill=X, expand=YES)
         btn = ttk.Button(master=container, text="Browse", command=self.onBrowse)
         btn.pack(side=LEFT, padx=5)
@@ -113,9 +115,9 @@ class mainGui(ttk.Frame):
 
 if __name__ == "__main__":
     app = ttk.Window(
-        title = "Data Entry", 
+        title = "Global Text Replace Tool v0.0.1", 
         themename = "flatly", 
-        size=(1000,600),
+        size=(800,405),
         resizable = (False, False)
         )
     mainGui(app)
