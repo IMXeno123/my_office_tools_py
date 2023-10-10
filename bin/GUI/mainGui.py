@@ -1,6 +1,7 @@
 ﻿import ttkbootstrap as ttk
 import re
 import os
+from db import MySqlDatabases
 from logs import *
 from pathlib import Path
 from ttkbootstrap.dialogs import Messagebox
@@ -8,15 +9,17 @@ from tkinter.filedialog import askdirectory
 from ttkbootstrap.constants import *
 
 env_path = Path(__file__).parent
+db = MySqlDatabases(env_path)
 
 class mainGui(ttk.Frame):
-    
     def __init__(self, master=None):
         super().__init__(master, padding=(10))
-        # self.creat_settings()
+        db.creat_settings()
+        self.all_settings = db.all_data()
+        _path = self.all_settings[0]["path"]
         self.pack(fill=BOTH, expand=YES)
         self.style = ttk.Style()
-        self.path_var = ttk.StringVar(value="")
+        self.path_var = ttk.StringVar(value=_path)
         self.find_txt_var = ttk.StringVar(value="") # find
         self.repalce_txt_var = ttk.StringVar(value="") # replace
         _content = get_log(env_path)
@@ -133,6 +136,7 @@ class mainGui(ttk.Frame):
         path = askdirectory(title="Browse directory")
         if path:
             self.path_var.set(path)
+            db.change_settings(self.all_settings, path, 0, "path")
             # log
             self.loger_(f'[info] Set path: "{self.path_var.get()}"', env_path)
        
