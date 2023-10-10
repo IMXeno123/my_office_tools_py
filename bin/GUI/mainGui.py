@@ -1,16 +1,13 @@
 ﻿import ttkbootstrap as ttk
-import sys
-# from sys import path as s_path
 from pathlib import Path
 from ttkbootstrap.dialogs import Messagebox
 from tkinter.filedialog import askdirectory
 from ttkbootstrap.constants import *
-
-env_path = Path(__file__).parent
-# sys.path.append(rf"{env_path}")
 from assets.db import MySqlDatabases
 from assets.SubByDir import subByDir
 from assets.logs import *
+
+env_path = Path(__file__).parent
 db = MySqlDatabases(env_path)
 
 

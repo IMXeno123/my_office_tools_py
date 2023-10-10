@@ -1,5 +1,5 @@
 ﻿import re
-import os
+from os import walk
 from pathlib import Path
 from assets.logs import creat_log
 
@@ -13,7 +13,7 @@ def subByDir(old_text:str, new_text:str, path:str, log_path:str|bool=False):
     counts = 0
     old_text = re.compile(old_text)
     
-    for root, dirs, files in os.walk(path):
+    for root, dirs, files in walk(path):
         for filename in files:
             if filename.endswith(".md") or filename.endswith(".txt"):
                 filepath = Path(root) / filename
