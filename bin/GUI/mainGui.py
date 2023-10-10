@@ -1,4 +1,5 @@
-﻿import ttkbootstrap as ttk
+﻿from os import replace
+import ttkbootstrap as ttk
 from db import MySqlDatabases
 from SubByDir import subByDir
 from logs import *
@@ -14,7 +15,7 @@ class mainGui(ttk.Frame):
     def __init__(self, master=None):
         super().__init__(master, padding=(10))
         image_files = {
-            "help_icon":"help_icon_16px.png"
+            "help_icon":"help_icon_16px.png",
             }
         self.photoimages = []
         imgpath = Path(__file__).parent / 'assets'
@@ -47,7 +48,7 @@ class mainGui(ttk.Frame):
         
     def themeSelection(self):
         theme_names = self.style.theme_names()
-        theme_selection = ttk.Frame(self.right_frame, padding=(10, 10, 10, 0))
+        theme_selection = ttk.Frame(self.right_frame, padding=(10, 10, 0, 0))
         theme_selection.pack(fill=X, expand=YES, anchor=N)
         lbl = ttk.Label(theme_selection, text="Select a theme : ")
         self.theme_cbo = ttk.Combobox(
@@ -78,14 +79,14 @@ class mainGui(ttk.Frame):
         find_frame.pack(fill=X, anchor=N)
         ttk.Label(find_frame, text="Find : ").pack(side=LEFT, anchor=W)
         ttk.Button(find_frame, image="help_icon", bootstyle=LINK, command=self.createHelpMessage).pack(side=RIGHT, anchor=E, padx=5)
-        find_txt = ttk.Text(
+        self.find_txt = ttk.Text(
             master=self.left_frame,
             height=6,
             width=50,
             wrap='none'
             )
-        find_txt.insert(END, self.find_txt_var.get())
-        find_txt.pack(
+        self.find_txt.insert(END, self.find_txt_var.get())
+        self.find_txt.pack(
             anchor=N,
             pady=5,
             padx=5,
@@ -95,30 +96,25 @@ class mainGui(ttk.Frame):
         
         ttk.Label(self.left_frame, text="Replace : ").pack(fill=X, anchor=N)
         
-        repalce_txt = ttk.Text(
+        self.repalce_txt = ttk.Text(
             master=self.left_frame,
             height=8,
             width=50,
             wrap="char"
             )
-        repalce_txt.insert(END, self.repalce_txt_var.get())
-        repalce_txt.pack(
+        self.repalce_txt.insert(END, self.repalce_txt_var.get())
+        self.repalce_txt.pack(
             anchor=N,
             pady=5,
             padx=5,
             fill=BOTH,
             expand=YES
             )
-        
+        # replaced content
         btn_replace = ttk.Button(
             self.left_frame, 
             text="Replace", 
-            command=lambda:subByDir(
-                old_text=self.find_txt_var.get(),
-                new_text=self.repalce_txt_var.get(),
-                path=self.path_var.get(),
-                log_path=env_path
-            ))
+            command=self.replace_text)
         btn_replace.pack(side=RIGHT, padx=5)
 
     def rightFrame(self):
@@ -138,7 +134,30 @@ class mainGui(ttk.Frame):
             fill=BOTH,
             expand=YES
             )
-        
+    
+    def replace_text(self):
+        # print(self.find_txt.get(1.0,END))
+        # print(self.repalce_txt.get(1.0,END))
+        # print(self.path_var.get())
+        ot = self.find_txt.get(1.0,END)[:-1]
+        ot = ot.replace("\n", "\\n")
+        nt = self.repalce_txt.get(1.0,END)[:-1]
+        # print(ot)
+        # print(nt)
+        # return None
+        bool_ = subByDir(
+                old_text=ot,
+                new_text=nt,
+                path=self.path_var.get(),
+                log_path=env_path
+            )
+        if bool_:
+            self.loger_(f'[info] 替換成功!', env_path)
+        else:
+            self.loger_(f'[info] 未找到可替換的內容!', env_path)
+            
+        return bool_
+    
     def createFormEntry(self, variable):
         container = ttk.Frame(self.left_frame)
         container.pack(fill=X, expand=YES, pady=5)
@@ -149,9 +168,11 @@ class mainGui(ttk.Frame):
         
     def createHelpMessage(self):
         Messagebox.ok(title="使用提示", 
+                      alert=True,
                       message="""Tip: 
 支持正則表達式搜尋喔 :)
 正則表達式的開頭可以加(?sm)等, 以修改匹配行為!
+注意：因為是正則模式，所以有特殊符號記得要用"\"轉譯!
                       """)
 
     def onBrowse(self):
@@ -173,9 +194,10 @@ if __name__ == "__main__":
     app = ttk.Window(
         title = "Global Text Replace Tool v0.0.1", 
         themename = "darkly", 
+        position=(200,200),
         size=(800,430),
-        position=(800,200),
         resizable = (False, False)
         )
     mainGui(app)
+    app.iconbitmap(f"{env_path}/assets/dora.ico")
     app.mainloop()

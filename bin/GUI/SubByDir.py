@@ -43,5 +43,6 @@ if __name__ == "__main__":
     ot = input("ot: ")
     ot = f"(?sm){ot}"
     nt = input("nt: ")
-    dir_ = "E:/3D Objects/testfolder"
+    dir_ = input("dir: ")
+    # dir_ = "E:/3D Objects/testfolder"
     subByDir(ot,nt,dir_)                
