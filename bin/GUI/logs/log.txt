@@ -8,3 +8,58 @@
 2023-10-10 08:00:43 [info] "E:/3D Objects/testfolder\NewFolder\1.txt"
 2023-10-10 08:00:43 [info] "E:/3D Objects/testfolder\NewFolder\2.md"
 2023-10-10 08:00:43 [info] 有4個檔案替換成功!
+2023-10-10 10:19:44 [info] "E:/3D Objects/testfolder\1.txt"
+2023-10-10 10:19:44 [info] "E:/3D Objects/testfolder\2.md"
+2023-10-10 10:19:44 [info] "E:/3D Objects/testfolder\NewFolder\1.txt"
+2023-10-10 10:19:44 [info] "E:/3D Objects/testfolder\NewFolder\2.md"
+2023-10-10 10:19:44 [info] 有4個檔案替換成功!
+2023-10-10 10:36:10 [info] "E:\3D Objects\testfolder\1.txt"
+2023-10-10 10:36:10 [info] "E:\3D Objects\testfolder\2.md"
+2023-10-10 10:36:10 [info] "E:\3D Objects\testfolder\1.txt"
+2023-10-10 10:36:10 [info] "E:\3D Objects\testfolder\2.md"
+2023-10-10 10:36:10 [info] 有4個檔案替換成功!
+2023-10-10 10:36:30 [info] "E:\3D Objects\testfolder\1.txt"
+2023-10-10 10:36:30 [info] "E:\3D Objects\testfolder\2.md"
+2023-10-10 10:36:30 [info] "E:\3D Objects\testfolder\1.txt"
+2023-10-10 10:36:30 [info] "E:\3D Objects\testfolder\2.md"
+2023-10-10 10:36:30 [info] 有4個檔案替換成功!
+2023-10-10 10:38:07 [info] "E:\3D Objects\testfolder\1.txt"
+2023-10-10 10:38:07 [info] "E:\3D Objects\testfolder\2.md"
+2023-10-10 10:38:07 [info] "E:\3D Objects\testfolder\NewFolder\1.txt"
+2023-10-10 10:38:07 [info] "E:\3D Objects\testfolder\NewFolder\2.md"
+2023-10-10 10:38:07 [info] 有4個檔案替換成功!
+2023-10-10 10:38:14 [info] "E:\3D Objects\testfolder\1.txt"
+2023-10-10 10:38:14 [info] "E:\3D Objects\testfolder\2.md"
+2023-10-10 10:38:14 [info] "E:\3D Objects\testfolder\NewFolder\1.txt"
+2023-10-10 10:38:14 [info] "E:\3D Objects\testfolder\NewFolder\2.md"
+2023-10-10 10:38:14 [info] 有4個檔案替換成功!
+2023-10-10 10:40:45 [info] "E:\3D Objects\testfolder\1.txt"
+2023-10-10 10:40:45 [info] "E:\3D Objects\testfolder\2.md"
+2023-10-10 10:40:45 [info] "E:\3D Objects\testfolder\NewFolder\1.txt"
+2023-10-10 10:40:45 [info] "E:\3D Objects\testfolder\NewFolder\2.md"
+2023-10-10 10:40:45 [info] 有4個檔案替換成功!
+2023-10-10 10:40:52 [info] "E:\3D Objects\testfolder\1.txt"
+2023-10-10 10:40:52 [info] "E:\3D Objects\testfolder\2.md"
+2023-10-10 10:40:52 [info] "E:\3D Objects\testfolder\NewFolder\1.txt"
+2023-10-10 10:40:52 [info] "E:\3D Objects\testfolder\NewFolder\2.md"
+2023-10-10 10:40:52 [info] 有4個檔案替換成功!
+2023-10-10 10:40:53 [info] "E:\3D Objects\testfolder\1.txt"
+2023-10-10 10:40:53 [info] "E:\3D Objects\testfolder\2.md"
+2023-10-10 10:40:53 [info] "E:\3D Objects\testfolder\NewFolder\1.txt"
+2023-10-10 10:40:53 [info] "E:\3D Objects\testfolder\NewFolder\2.md"
+2023-10-10 10:40:53 [info] 有4個檔案替換成功!
+2023-10-10 10:40:59 [info] "E:\3D Objects\testfolder\1.txt"
+2023-10-10 10:40:59 [info] "E:\3D Objects\testfolder\2.md"
+2023-10-10 10:40:59 [info] "E:\3D Objects\testfolder\NewFolder\1.txt"
+2023-10-10 10:40:59 [info] "E:\3D Objects\testfolder\NewFolder\2.md"
+2023-10-10 10:40:59 [info] 有4個檔案替換成功!
+2023-10-10 10:41:40 [info] "E:\3D Objects\testfolder\1.txt"
+2023-10-10 10:41:40 [info] "E:\3D Objects\testfolder\2.md"
+2023-10-10 10:41:40 [info] "E:\3D Objects\testfolder\NewFolder\1.txt"
+2023-10-10 10:41:40 [info] "E:\3D Objects\testfolder\NewFolder\2.md"
+2023-10-10 10:41:40 [info] 有4個檔案替換成功!
+2023-10-10 10:45:27 [info] "E:\3D Objects\testfolder\1.txt"
+2023-10-10 10:45:27 [info] "E:\3D Objects\testfolder\2.md"
+2023-10-10 10:45:27 [info] "E:\3D Objects\testfolder\NewFolder\1.txt"
+2023-10-10 10:45:27 [info] "E:\3D Objects\testfolder\NewFolder\2.md"
+2023-10-10 10:45:27 [info] 有4個檔案替換成功!

@@ -12,16 +12,21 @@ db = MySqlDatabases(env_path)
 
 class mainGui(ttk.Frame):
     def __init__(self, master=None):
-        image_files = {
-            "help":""
-            }
         super().__init__(master, padding=(10))
+        image_files = {
+            "help_icon":"help_icon_16px.png"
+            }
+        self.photoimages = []
+        imgpath = Path(__file__).parent / 'assets'
+        for key, val in image_files.items():
+            path_1 = imgpath / val
+            self.photoimages.append(ttk.PhotoImage(name=key, file=path_1))
         db.creat_settings()
         self.all_settings = db.all_data()
-        _path = self.all_settings[0]["path"]
+        path_2 = self.all_settings[0]["path"]
         self.pack(fill=BOTH, expand=YES)
         self.style = ttk.Style()
-        self.path_var = ttk.StringVar(value=_path)
+        self.path_var = ttk.StringVar(value=path_2)
         self.find_txt_var = ttk.StringVar(value="") # find
         self.repalce_txt_var = ttk.StringVar(value="") # replace
         # _content = get_log(env_path)
@@ -70,8 +75,10 @@ class mainGui(ttk.Frame):
     def leftFrame(self):
         ttk.Label(self.left_frame, text="Path to walk : ").pack(fill=X, anchor=N)
         self.createFormEntry(self.path_var)
-        ttk.Label(self.left_frame, text="Find : ").pack(side=LEFT, fill=X, anchor=N)
-        ttk.Button(self.left_frame, image="").pack(side=LEFT, anchor=N)
+        find_frame = ttk.Frame(self.left_frame)
+        find_frame.pack(fill=X, anchor=N)
+        ttk.Label(find_frame, text="Find : ").pack(side=LEFT, anchor=W)
+        ttk.Button(find_frame, image="help_icon", bootstyle=LINK, command=self.createHelpMessage).pack(side=RIGHT, anchor=E, padx=5)
         find_txt = ttk.Text(
             master=self.left_frame,
             height=6,
@@ -104,9 +111,15 @@ class mainGui(ttk.Frame):
             expand=YES
             )
         
-        btn_replace = ttk.Button(self.left_frame, 
-                                 text="Replace", 
-                                 command=lambda:self.subByDir())
+        btn_replace = ttk.Button(
+            self.left_frame, 
+            text="Replace", 
+            command=lambda:subByDir(
+                old_text=self.find_txt_var.get(),
+                new_text=self.repalce_txt_var.get(),
+                path=self.path_var.get(),
+                log_path=env_path
+            ))
         btn_replace.pack(side=RIGHT, padx=5)
 
     def rightFrame(self):
@@ -134,6 +147,13 @@ class mainGui(ttk.Frame):
         ent.pack(side=LEFT, padx=5, fill=X, expand=YES)
         btn = ttk.Button(master=container, text="Browse", command=self.onBrowse)
         btn.pack(side=LEFT, padx=5)
+        
+    def createHelpMessage(self):
+        Messagebox.ok(title="使用提示", 
+                      message="""Tip: 
+支持正則表達式搜尋喔 :)
+正則表達式的開頭可以加(?sm)等, 以修改匹配行為!
+                      """)
 
     def onBrowse(self):
         path = askdirectory(title="Browse directory")
@@ -155,6 +175,7 @@ if __name__ == "__main__":
         title = "Global Text Replace Tool v0.0.1", 
         themename = "darkly", 
         size=(800,430),
+        position=(800,200),
         resizable = (False, False)
         )
     mainGui(app)

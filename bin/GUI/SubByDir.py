@@ -1,49 +1,47 @@
 ﻿import re
-import os
+from pathlib import Path
+from logs import creat_log
 
-
-def subByDir(self, old_text:str, new_text:str, path:str):
+def subByDir(old_text:str, new_text:str, path:str, log_path:str|bool=False):
     """
     Need import re and os modules!
     Only support txt md.
     """
-    # try:       
-        # sub context
     isMatch = 0
     counts = 0
-    # old_text = re.compile(old_text)
-    for root, dirs, files in os.walk(self.path_var.get()):
-        # print(root)
-        # print(dirs)
-        # print(files)
-        # break
+    old_text = re.compile(old_text)
+    
+    for root, dirs, files in Path(path).walk():
         for filename in files:
             if filename.endswith(".md") or filename.endswith(".txt"):
-                # Path.joinpath()
-                filepath = os.path.join(root, filename)
+                filepath = Path(root) / filename
                 with open(filepath, "r", encoding="utf-8") as f:
                     content = f.read()
-                if re.search(old_text, content, flags=re.M|re.S):
+                if re.search(old_text, content):
                     isMatch = 1
                     # log
-                    self.loger_(f"[info] \"{filepath}\"", path)
+                    if log_path:
+                        creat_log(f"[info] \"{filepath}\"", log_path)
                     counts += 1
-                    contents = re.sub(old_text, new_text, content, flags=re.M|re.S)
+                    contents = re.sub(old_text, new_text, content)
                     with open(filepath, "w", encoding="utf-8") as f:
-                        print(filepath)
-                        print(contents)
                         f.write(contents)
-                        print("YES!!!")
+
     if isMatch:
         # log
-        log = f"[info] 有{counts}個檔案替換成功!"
+        if log_path:
+            creat_log(f"[info] 有{counts}個檔案替換成功!", log_path)
         isMatch = 0
-        return log
+        return True
     else:
         # log
-        log = f"[info] **未匹配到內容**"
-        return log
-                
-    # except Exception as error:
-    #     # log
-    #     self.loger_(f"[error] 遇到錯誤：{error}", env_path)
+        if log_path:
+            creat_log(f"[info] **未匹配到內容**", log_path)
+        return False
+        
+if __name__ == "__main__":
+    ot = input("ot: ")
+    ot = f"(?sm){ot}"
+    nt = input("nt: ")
+    dir_ = "E:/3D Objects/testfolder"
+    subByDir(ot,nt,dir_)                
