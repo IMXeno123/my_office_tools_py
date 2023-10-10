@@ -1,5 +1,4 @@
 ﻿import ttkbootstrap as ttk
-import json
 import re
 import os
 from logs import *
@@ -12,9 +11,9 @@ env_path = Path(__file__).parent
 
 class mainGui(ttk.Frame):
     
-    def __init__(self, master):
+    def __init__(self, master=None):
         super().__init__(master, padding=(10))
-        self.creat_settings()
+        # self.creat_settings()
         self.pack(fill=BOTH, expand=YES)
         self.style = ttk.Style()
         self.path_var = ttk.StringVar(value="")
@@ -135,8 +134,7 @@ class mainGui(ttk.Frame):
         if path:
             self.path_var.set(path)
             # log
-            log_ = creat_log(f'[info] Set path: "{self.path_var.get()}"', env_path)
-            self.log_txt.insert(END, log_)
+            self.loger_(f'[info] Set path: "{self.path_var.get()}"', env_path)
        
     def subByDir(self, directory:str, old_text:str, new_text:str):
         """
@@ -156,34 +154,30 @@ class mainGui(ttk.Frame):
                         if re.search(old_text, content, flags=re.M|re.S):
                             isMatch = 1
                             # log
-                            log_ = creat_log(f"[info] \"{filepath}\"", directory)
-                            self.log_txt.insert(END, log_)
+                            self.loger_(f"[info] \"{filepath}\"", env_path)
                             counts += 1
                             content = re.sub(old_text, new_text, content, flags=re.M|re.S)
                             with open(filepath, "w", encoding="utf-8") as f:
                                 f.write(content)
             if isMatch:
                 # log
-                log_ = creat_log(f"[info] 有{counts}個檔案替換成功!", directory)
-                self.log_txt.insert(END, log_)
+                self.loger_(f"[info] 有{counts}個檔案替換成功!", env_path)
                 isMatch = 0
             else:
                 # log
-                log_ = creat_log(f"[info] **未匹配到內容**", directory)
-                self.log_txt.insert(END, log_)
+                self.loger_(f"[info] **未匹配到內容**", env_path)
                 
         except Exception as error:
             # log
-            log_ = creat_log(f"[error] 遇到錯誤：{error}", directory)
-            self.log_txt.insert(END, log_)
+            self.loger_(f"[error] 遇到錯誤：{error}", env_path)
             
-    def creat_settings(self, path):
-        if not Path(f"{env_path}/config/config.ini").exists():
-            with open(f"{env_path}/config/config.ini", mode="a", encoding="UTF-8") as f:
-                f.write(f"path_m={path}")
-                
-    def get_settings(self):
-        
+            
+    def loger_(self, log, path=False):
+        if not path:
+            path = env_path
+        log_ = creat_log(log, path)
+        self.log_txt.insert(END, log_)
+            
 
 if __name__ == "__main__":
     app = ttk.Window(
