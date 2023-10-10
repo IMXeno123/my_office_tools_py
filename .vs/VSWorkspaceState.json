@@ -3,8 +3,8 @@
     "",
     "\\bin",
     "\\bin\\GUI",
-    "\\bin\\GUI\\dist",
-    "\\bin\\GUI\\dist\\mainGui"
+    "\\bin\\GUI\\assets"
   ],
+  "SelectedNode": "\\bin\\GUI\\assets\\SubByDir.py",
   "PreviewInSolutionExplorer": false
 }

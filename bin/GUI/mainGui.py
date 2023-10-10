@@ -31,7 +31,7 @@ class mainGui(ttk.Frame):
         self.find_txt_var = ttk.StringVar(value="") # find
         self.repalce_txt_var = ttk.StringVar(value="") # replace
         _content = ""
-        self.log_txt_var = ttk.StringVar(value=_content)
+        self.log_txt_var = ttk.StringVar(value=_content) # log_var
         self.createWidget()
         
     def createWidget(self):
@@ -194,10 +194,10 @@ if __name__ == "__main__":
     app = ttk.Window(
         title = "Global Text Replace Tool v0.0.1", 
         themename = "darkly", 
-        position=(200,200),
         size=(800,430),
         resizable = (False, False)
         )
+    app.position_center()
     mainGui(app)
     app.iconbitmap(f"{env_path}/assets/dora.ico")
     app.mainloop()
