@@ -22,7 +22,8 @@ class mainGui(ttk.Frame):
         self.path_var = ttk.StringVar(value=_path)
         self.find_txt_var = ttk.StringVar(value="") # find
         self.repalce_txt_var = ttk.StringVar(value="") # replace
-        _content = get_log(env_path)
+        # _content = get_log(env_path)
+        _content = ""
         self.log_txt_var = ttk.StringVar(value=_content)
         self.createWidget()
         
@@ -68,6 +69,7 @@ class mainGui(ttk.Frame):
         ttk.Label(self.left_frame, text="Path to walk : ").pack(fill=X, anchor=N)
         self.createFormEntry(self.path_var)
         ttk.Label(self.left_frame, text="Find : ").pack(fill=X, anchor=N)
+        ttk.Label(self.left_frame, text="Tip: 正則表達式的開頭可以加(?sm)等, 以修改匹配行為!").pack(fill=X, anchor=N)
         find_txt = ttk.Text(
             master=self.left_frame,
             height=6,
@@ -102,9 +104,7 @@ class mainGui(ttk.Frame):
         
         btn_replace = ttk.Button(self.left_frame, 
                                  text="Replace", 
-                                 command=lambda:self.subByDir(self.path_var.get(), 
-                                                              self.find_txt_var.get(), 
-                                                              self.repalce_txt_var.get()))
+                                 command=lambda:self.subByDir(self.find_txt_var.get(), self.repalce_txt_var.get()))
         btn_replace.pack(side=RIGHT, padx=5)
 
     def rightFrame(self):
@@ -140,40 +140,49 @@ class mainGui(ttk.Frame):
             # log
             self.loger_(f'[info] Set path: "{self.path_var.get()}"', env_path)
        
-    def subByDir(self, directory:str, old_text:str, new_text:str):
+    def subByDir(self, old_text:str, new_text:str):
         """
         Need import re and os modules!
         Only support txt md.
         """
-        try:       
+        # try:       
             # sub context
-            isMatch = 0
-            counts = 0
-            for root, dirs, files in os.walk(directory):
-                for filename in files:
-                    if filename.endswith(".md") or filename.endswith(".txt"):
-                        filepath = os.path.join(root, filename)
-                        with open(filepath, "r", encoding="utf-8") as f:
-                            content = f.read()
-                        if re.search(old_text, content, flags=re.M|re.S):
-                            isMatch = 1
-                            # log
-                            self.loger_(f"[info] \"{filepath}\"", env_path)
-                            counts += 1
-                            content = re.sub(old_text, new_text, content, flags=re.M|re.S)
-                            with open(filepath, "w", encoding="utf-8") as f:
-                                f.write(content)
-            if isMatch:
-                # log
-                self.loger_(f"[info] 有{counts}個檔案替換成功!", env_path)
-                isMatch = 0
-            else:
-                # log
-                self.loger_(f"[info] **未匹配到內容**", env_path)
-                
-        except Exception as error:
+        isMatch = 0
+        counts = 0
+        # old_text = re.compile(old_text)
+        for root, dirs, files in os.walk(self.path_var.get()):
+            # print(root)
+            # print(dirs)
+            # print(files)
+            # break
+            for filename in files:
+                if filename.endswith(".md") or filename.endswith(".txt"):
+                    # Path.joinpath()
+                    filepath = os.path.join(root, filename)
+                    with open(filepath, "r", encoding="utf-8") as f:
+                        content = f.read()
+                    if re.search(old_text, content, flags=re.M|re.S):
+                        isMatch = 1
+                        # log
+                        self.loger_(f"[info] \"{filepath}\"", env_path)
+                        counts += 1
+                        contents = re.sub(old_text, new_text, content, flags=re.M|re.S)
+                        with open(filepath, "w", encoding="utf-8") as f:
+                            print(filepath)
+                            print(contents)
+                            f.write(contents)
+                            print("YES!!!")
+        if isMatch:
             # log
-            self.loger_(f"[error] 遇到錯誤：{error}", env_path)
+            self.loger_(f"[info] 有{counts}個檔案替換成功!", env_path)
+            isMatch = 0
+        else:
+            # log
+            self.loger_(f"[info] **未匹配到內容**", env_path)
+                
+        # except Exception as error:
+        #     # log
+        #     self.loger_(f"[error] 遇到錯誤：{error}", env_path)
             
             
     def loger_(self, log, path=False):
@@ -187,7 +196,7 @@ if __name__ == "__main__":
     app = ttk.Window(
         title = "Global Text Replace Tool v0.0.1", 
         themename = "flatly", 
-        size=(800,405),
+        size=(800,430),
         resizable = (False, False)
         )
     mainGui(app)

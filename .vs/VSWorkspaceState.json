@@ -2,7 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\bin",
-    "\\bin\\GUI"
+    "\\bin\\GUI",
+    "\\bin\\GUI\\config",
+    "\\bin\\GUI\\testfolder",
+    "\\bin\\GUI\\testfolder\\NewFolder"
   ],
   "SelectedNode": "\\bin\\GUI\\mainGui.py",
   "PreviewInSolutionExplorer": false

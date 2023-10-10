@@ -1,3 +1,5 @@
-2023-10-10 05:35:38 [error] No data!
-2023-10-10 05:37:35 [error] No data!
-2023-10-10 06:15:06 [info] Set path: "E:/Downloads"
+2023-10-10 07:04:44 [info] "E:/3D Objects/testfolder\1.txt"
+2023-10-10 07:04:44 [info] "E:/3D Objects/testfolder\2.md"
+2023-10-10 07:04:44 [info] "E:/3D Objects/testfolder\NewFolder\1.txt"
+2023-10-10 07:04:44 [info] "E:/3D Objects/testfolder\NewFolder\2.md"
+2023-10-10 07:04:44 [info] 有4個檔案替換成功!
