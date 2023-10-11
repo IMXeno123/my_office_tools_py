@@ -47,3 +47,13 @@
 [info] "E:/3D Objects/New folder/New Text Document.txt"
 [info] 有3個檔案替換成功!
 
+2023-10-11 11:33:35 [info] App started!
+2023-10-11 11:33:47 [info] set theme as "morph"
+2023-10-11 11:33:50 [info] set theme as "cosmo"
+2023-10-11 11:33:52 [info] set theme as "simplex"
+2023-10-11 11:33:54 [info] set theme as "cerculean"
+2023-10-11 11:33:56 [info] set theme as "cyborg"
+2023-10-11 11:33:58 [info] set theme as "cosmo"
+2023-10-11 11:34:01 [info] set theme as "superhero"
+2023-10-11 11:34:03 [info] set theme as "cyborg"
+2023-10-11 11:35:51 [info] App stops running!
