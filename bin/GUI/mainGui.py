@@ -145,7 +145,7 @@ class mainGui(ttk.Frame):
         # print(self.repalce_txt.get(1.0,END))
         # print(self.path_var.get())
         ot = self.find_txt.get(1.0,END)[:-1]
-        ot = ot.replace("\n", "\\n")
+        # ot = ot.replace("\n", "\\n")
         nt = self.repalce_txt.get(1.0,END)[:-1]
         # print(ot)
         # print(nt)
@@ -156,12 +156,15 @@ class mainGui(ttk.Frame):
                 path=self.path_var.get(),
                 log_path=env_path
             )
-        if bool_:
+        # return None
+        if bool_[0]:
             self.loger_(f'[info] 替換成功!', env_path)
+            self.loger_(bool_[1], env_path)
         else:
             self.loger_(f'[info] 未找到可替換的內容!', env_path)
+            self.loger_(bool_[1], env_path)
             
-        return bool_
+        return bool_[0]
     
     def createFormEntry(self, variable):
         container = ttk.Frame(self.left_frame)
@@ -177,7 +180,7 @@ class mainGui(ttk.Frame):
                       message="""Tip: 
 支持正則表達式搜尋喔 :)
 正則表達式的開頭可以加(?sm)等, 以修改匹配行為!
-注意：因為是正則模式，所以有特殊符號記得要用"\"轉譯!
+注意：因為是正則模式，所以有特殊符號記得要用"\\"轉譯!
                       """)
 
     def onBrowse(self):
@@ -196,6 +199,7 @@ class mainGui(ttk.Frame):
             
 
 if __name__ == "__main__":
+    creat_log('[info] App started!', env_path)
     app = ttk.Window(
         title = "Global Text Replace Tool v0.0.1", 
         size=(800,430),
@@ -205,3 +209,5 @@ if __name__ == "__main__":
     mainGui(app)
     app.iconbitmap(f"{env_path}/assets/dora.ico")
     app.mainloop()
+    creat_log('[info] App running ended!', env_path)
+    

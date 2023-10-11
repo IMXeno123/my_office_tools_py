@@ -12,7 +12,9 @@ def subByDir(old_text:str, new_text:str, path:str, log_path:str|bool=False):
     isMatch = 0
     counts = 0
     old_text = re.compile(old_text)
-    
+    print(old_text)
+    # return None
+    my_log = ""
     for root, dirs, files in walk(path):
         for filename in files:
             if filename.endswith(".md") or filename.endswith(".txt"):
@@ -23,8 +25,9 @@ def subByDir(old_text:str, new_text:str, path:str, log_path:str|bool=False):
                     isMatch = 1
                     # log
                     if log_path:
-                        creat_log(f"[info] \"{filepath}\"", log_path)
+                        my_log = my_log + f"[info] \"{filepath}\"\n"
                     counts += 1
+                    # break    
                     contents = re.sub(old_text, new_text, content)
                     with open(filepath, "w", encoding="utf-8") as f:
                         f.write(contents)
@@ -32,14 +35,14 @@ def subByDir(old_text:str, new_text:str, path:str, log_path:str|bool=False):
     if isMatch:
         # log
         if log_path:
-            creat_log(f"[info] 有{counts}個檔案替換成功!", log_path)
+            my_log = my_log + f"[info] 有{counts}個檔案替換成功!\n"
         isMatch = 0
-        return True
+        return (True, my_log)
     else:
         # log
         if log_path:
-            creat_log(f"[info] **未匹配到內容**", log_path)
-        return False
+            my_log = my_log + f"[info] **未匹配到內容**\n"
+        return (False, my_log)
         
 if __name__ == "__main__":
     ot = input("ot: ")

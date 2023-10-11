@@ -6,14 +6,17 @@ def creat_log(log, path=".."):
     # print(log)
     c_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     bool_ = Path(f"{path}/logs/").exists()
+    my_log = None
     if bool_:
         with open(f"{path}/logs/log.txt", mode="a", encoding="UTF-8") as f:
-            f.write(f"{c_time} {log}\n")
+            my_log = f"{c_time} {log}\n"
+            f.write(my_log)
     else:
         Path(f"{path}/logs/").mkdir(parents=True)
         with open(f"{path}/logs/log.txt", mode="a", encoding="UTF-8") as f:
-            f.write(f"{c_time} {log}\n")
-    return f"{c_time} {log}\n"
+            my_log = f"{c_time} {log}\n"
+            f.write(my_log)
+    return my_log
     
 def get_log(path=".."):
     bool_ = Path(f"{path}/logs/log.txt").exists()
