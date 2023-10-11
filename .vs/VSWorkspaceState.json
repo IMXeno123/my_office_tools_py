@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\bin",
-    "\\bin\\GUI"
+    "\\bin\\GUI",
+    "\\bin\\GUI\\version_info"
   ],
-  "SelectedNode": "\\bin\\GUI\\metadata.yaml",
+  "SelectedNode": "\\bin\\GUI\\version_info",
   "PreviewInSolutionExplorer": false
 }
