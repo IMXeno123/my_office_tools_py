@@ -77,3 +77,32 @@
 [info] 有6個檔案替換成功!
 
 2023-10-11 11:47:00 [info] App stops running!
+2023-10-11 11:48:22 [info] App started!
+2023-10-11 11:48:45 [info] 替換成功!
+2023-10-11 11:48:45 [info] "E:\3D Objects\New folder\New Text Document - Copy (2).md"
+[info] "E:\3D Objects\New folder\New Text Document - Copy.txt"
+[info] "E:\3D Objects\New folder\New Text Document.txt"
+[info] "E:\3D Objects\New folder\New folder\New Text Document - Copy (2).md"
+[info] "E:\3D Objects\New folder\New folder\New Text Document - Copy.txt"
+[info] "E:\3D Objects\New folder\New folder\New Text Document.txt"
+[info] 有6個檔案替換成功!
+
+2023-10-11 11:49:28 [info] 替換成功!
+2023-10-11 11:49:28 [info] "E:\3D Objects\New folder\New Text Document - Copy (2).md"
+[info] "E:\3D Objects\New folder\New Text Document - Copy.txt"
+[info] "E:\3D Objects\New folder\New Text Document.txt"
+[info] "E:\3D Objects\New folder\New folder\New Text Document - Copy (2).md"
+[info] "E:\3D Objects\New folder\New folder\New Text Document - Copy.txt"
+[info] "E:\3D Objects\New folder\New folder\New Text Document.txt"
+[info] 有6個檔案替換成功!
+
+2023-10-11 11:49:44 [info] 替換成功!
+2023-10-11 11:49:44 [info] "E:\3D Objects\New folder\New Text Document - Copy (2).md"
+[info] "E:\3D Objects\New folder\New Text Document - Copy.txt"
+[info] "E:\3D Objects\New folder\New Text Document.txt"
+[info] "E:\3D Objects\New folder\New folder\New Text Document - Copy (2).md"
+[info] "E:\3D Objects\New folder\New folder\New Text Document - Copy.txt"
+[info] "E:\3D Objects\New folder\New folder\New Text Document.txt"
+[info] 有6個檔案替換成功!
+
+2023-10-11 11:49:59 [info] App stops running!
