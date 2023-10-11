@@ -32,8 +32,8 @@ class mainGui(ttk.Frame):
         self.style.theme_use(theme_)
         
         self.path_var = ttk.StringVar(value=path_2)
-        self.find_txt_var = ttk.StringVar(value="") # find
-        self.repalce_txt_var = ttk.StringVar(value="") # replace
+        self.find_txt_var = ttk.StringVar(value="") # find_var
+        self.repalce_txt_var = ttk.StringVar(value="") # replace_var
         _content = ""
         self.log_txt_var = ttk.StringVar(value=_content) # log_var
         self.createWidget()
@@ -43,8 +43,6 @@ class mainGui(ttk.Frame):
         self.left_frame.pack(side=LEFT)
         seprator_ = ttk.Separator(self, orient="vertical")
         seprator_.pack(side=LEFT, fill=Y, expand=YES, anchor=W, padx=5)
-        self.mid_frame = ttk.Frame(self)
-        self.mid_frame.pack(side=LEFT)
         self.right_frame = ttk.Frame(self)
         self.right_frame.pack(side=LEFT)
         self.leftFrame()
@@ -131,6 +129,7 @@ class mainGui(ttk.Frame):
             wrap="char"
             )
         self.log_txt.insert(END, self.log_txt_var.get())
+        self.log_txt.bind('<Key>', lambda e: 'break')  # Disable user input
         self.log_txt.pack(
             side=LEFT,
             anchor=N,
@@ -144,8 +143,8 @@ class mainGui(ttk.Frame):
         # print(self.find_txt.get(1.0,END))
         # print(self.repalce_txt.get(1.0,END))
         # print(self.path_var.get())
-        ot = self.find_txt.get(1.0,END)[:-1]
         # ot = ot.replace("\n", "\\n")
+        ot = self.find_txt.get(1.0,END)[:-1]
         nt = self.repalce_txt.get(1.0,END)[:-1]
         # print(ot)
         # print(nt)
@@ -178,9 +177,10 @@ class mainGui(ttk.Frame):
         mb = Messagebox.ok(title="使用提示", 
                       alert=True,
                       message="""Tip: 
-本工具直接支援正則表達式搜尋喔! :)
+  -- 本工具直接支援正則表達式搜尋喔! :)
+  -- 本工具支援多行替換模式! 
 正則表達式的開頭可以加 `(?sm)` 等, 以修改匹配行為!
-注意：因為是正則模式，所以有特殊符號記得要用 `\\` 轉譯!
+注意：因為默認是正則模式，所以有特殊符號記得要用 `\\` 轉譯!
                       """)
 
     def onBrowse(self):
@@ -209,5 +209,5 @@ if __name__ == "__main__":
     mainGui(app)
     app.iconbitmap(f"{env_path}/assets/dora.ico")
     app.mainloop()
-    creat_log('[info] App running ended!', env_path)
+    creat_log('[info] App stops running!', env_path)
     

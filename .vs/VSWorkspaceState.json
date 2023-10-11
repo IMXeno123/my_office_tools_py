@@ -2,10 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\bin",
-    "\\bin\\GUI",
-    "\\bin\\GUI\\dist",
-    "\\bin\\GUI\\dist\\mainGui"
+    "\\bin\\GUI"
   ],
-  "SelectedNode": "\\bin\\GUI\\dist\\mainGui\\多行文本文件批量替換正式版_v_0.0.1.exe",
+  "SelectedNode": "\\bin\\gui4.py",
   "PreviewInSolutionExplorer": false
 }
