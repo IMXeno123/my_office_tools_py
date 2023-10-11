@@ -1,10 +1,10 @@
 ﻿import re
-from os import walk
+import os
 from pathlib import Path
 from assets.logs import creat_log
 
 
-def subByDir(old_text:str, new_text:str, path:str, log_path:str|bool=False):
+def subByDir(old_text:str, new_text:str, path:str, log_path:str|bool=False, iswalk:bool=True):
     """
     Need import re and os modules!
     Only support txt md.
@@ -15,21 +15,38 @@ def subByDir(old_text:str, new_text:str, path:str, log_path:str|bool=False):
     print(old_text)
     # return None
     my_log = ""
-    for root, dirs, files in walk(path):
-        for filename in files:
-            if filename.endswith(".md") or filename.endswith(".txt"):
-                filepath = Path(root) / filename
-                with open(filepath, "r", encoding="utf-8") as f:
+    if iswalk:
+        for root, dirs, files in os.walk(path):
+            for filename in files:
+                if filename.endswith(".md") or filename.endswith(".txt"):
+                    filepath = Path(root) / filename
+                    with open(filepath, "r", encoding="utf-8") as f:
+                        content = f.read()
+                    if re.search(old_text, content):
+                        isMatch = 1
+                        # log
+                        if log_path:
+                            my_log = my_log + f"[info] \"{filepath}\"\n"
+                        counts += 1
+                        # break    
+                        contents = re.sub(old_text, new_text, content)
+                        with open(filepath, "w", encoding="utf-8") as f:
+                            f.write(contents)
+    else:
+        files = [f"{path}/{f}" for f in os.listdir(path) if os.path.isfile(f"{path}/{f}")] 
+        for file in files:
+            if file.endswith(".md") or file.endswith(".txt"):
+                with open(file, "r", encoding="utf-8") as f:
                     content = f.read()
                 if re.search(old_text, content):
                     isMatch = 1
                     # log
                     if log_path:
-                        my_log = my_log + f"[info] \"{filepath}\"\n"
+                        my_log = my_log + f"[info] \"{file}\"\n"
                     counts += 1
                     # break    
                     contents = re.sub(old_text, new_text, content)
-                    with open(filepath, "w", encoding="utf-8") as f:
+                    with open(file, "w", encoding="utf-8") as f:
                         f.write(contents)
 
     if isMatch:

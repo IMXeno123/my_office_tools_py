@@ -36,6 +36,7 @@ class mainGui(ttk.Frame):
         self.repalce_txt_var = ttk.StringVar(value="") # replace_var
         _content = ""
         self.log_txt_var = ttk.StringVar(value=_content) # log_var
+        self.traverse_toggle = ttk.IntVar(value="")      # checkbox_var
         self.createWidget()
         
     def createWidget(self):
@@ -73,11 +74,27 @@ class mainGui(ttk.Frame):
             t = self.cbo.get()
             self.style.theme_use(t)
             db.change_settings(self.all_settings, t, 1, "theme")
+            self.loger_(f'[info] set theme as "{t}"', env_path)
             self.theme_cbo.selection_clear()    
 
     def leftFrame(self):
-        ttk.Label(self.left_frame, text="Path to walk : ").pack(fill=X, anchor=N)
+        walk_frame = ttk.Frame(self.left_frame)
+        walk_frame.pack(fill=X, anchor=N)
+        ttk.Label(walk_frame, text="Path to walk : ").pack(side=LEFT, anchor=W)
+        self.cb1 = ttk.Checkbutton(
+            master=walk_frame,
+            text="Traverse all subdirectories",
+            bootstyle=(PRIMARY, ROUND, TOGGLE),
+            variable=self.traverse_toggle,
+            offvalue=0,
+            onvalue=1
+        )
+        self.cb1.invoke()
+        self.cb1.pack(side=RIGHT, anchor=E, padx=5)
+
+
         self.createFormEntry(self.path_var)
+        
         find_frame = ttk.Frame(self.left_frame)
         find_frame.pack(fill=X, anchor=N)
         ttk.Label(find_frame, text="Find : ").pack(side=LEFT, anchor=W)
@@ -149,12 +166,22 @@ class mainGui(ttk.Frame):
         # print(ot)
         # print(nt)
         # return None
-        bool_ = subByDir(
-                old_text=ot,
-                new_text=nt,
-                path=self.path_var.get(),
-                log_path=env_path
-            )
+        if self.traverse_toggle.get() == 1:
+            bool_ = subByDir(
+                    old_text=ot,
+                    new_text=nt,
+                    path=self.path_var.get(),
+                    log_path=env_path
+                )
+        else:
+            bool_ = subByDir(
+                    old_text=ot,
+                    new_text=nt,
+                    path=self.path_var.get(),
+                    log_path=env_path,
+                    iswalk=False
+                )
+            
         # return None
         if bool_[0]:
             self.loger_(f'[info] 替換成功!', env_path)
