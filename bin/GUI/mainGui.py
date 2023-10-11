@@ -80,7 +80,7 @@ class mainGui(ttk.Frame):
     def leftFrame(self):
         walk_frame = ttk.Frame(self.left_frame)
         walk_frame.pack(fill=X, anchor=N)
-        ttk.Label(walk_frame, text="Path to walk : ").pack(side=LEFT, anchor=W)
+        ttk.Label(walk_frame, text="Path : ").pack(side=LEFT, anchor=W)
         self.cb1 = ttk.Checkbutton(
             master=walk_frame,
             text="Traverse all subdirectories",
