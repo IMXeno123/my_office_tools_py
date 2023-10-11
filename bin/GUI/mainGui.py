@@ -201,7 +201,7 @@ class mainGui(ttk.Frame):
 if __name__ == "__main__":
     creat_log('[info] App started!', env_path)
     app = ttk.Window(
-        title = "Global Text Replace Tool v0.0.1", 
+        title = "Find and Replace Tool v1.0.0.1", 
         size=(800,430),
         resizable = (False, False)
         )
