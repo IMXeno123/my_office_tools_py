@@ -25,11 +25,11 @@ class mainGui(ttk.Frame):
         db.creat_settings()
         self.all_settings = db.all_data()           # All settings
         path_2 = self.all_settings[0]["path"]
-        theme_ = self.all_settings[1]["theme"]
+        # theme_ = self.all_settings[1]["theme"]
         
         self.pack(fill=BOTH, expand=YES)
         self.style = ttk.Style()
-        self.style.theme_use(theme_)
+        # self.style.theme_use(theme_)
         
         self.path_var = ttk.StringVar(value=path_2)
         self.find_txt_var = ttk.StringVar(value="") # find_var
@@ -227,14 +227,18 @@ class mainGui(ttk.Frame):
 
 if __name__ == "__main__":
     creat_log('[info] App started!', env_path)
+    all_settings = db.all_data()
+    theme_ = all_settings[1]["theme"]
     app = ttk.Window(
         title = "Find and Replace Tool v1.0.0.2", 
         size=(800,430),
-        resizable = (False, False)
+        resizable = (False, False),
+        themename=theme_,
+        iconphoto=f"{env_path}/assets/TW_icon_anniversary_007_400pix.png"
         )
-    app.position_center()
+    # app.position_center()
     mainGui(app)
-    app.iconbitmap(f"{env_path}/assets/dora.ico")
+    # app.iconbitmap(f"{env_path}/assets/dora.ico")
     app.mainloop()
     creat_log('[info] App stops running!', env_path)
     

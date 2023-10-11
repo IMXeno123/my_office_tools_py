@@ -106,3 +106,21 @@
 [info] 有6個檔案替換成功!
 
 2023-10-11 11:49:59 [info] App stops running!
+2023-10-11 20:46:21 [info] App started!
+2023-10-11 20:46:27 [info] App stops running!
+2023-10-11 20:46:30 [info] App started!
+2023-10-11 20:46:34 [info] App stops running!
+2023-10-11 20:46:41 [info] App started!
+2023-10-11 20:46:43 [info] App stops running!
+2023-10-11 20:46:44 [info] App started!
+2023-10-11 20:46:46 [info] App stops running!
+2023-10-11 20:46:48 [info] App started!
+2023-10-11 20:46:50 [info] App stops running!
+2023-10-11 20:48:12 [info] App started!
+2023-10-11 20:48:23 [info] App stops running!
+2023-10-11 20:48:29 [info] App started!
+2023-10-11 20:48:36 [info] App stops running!
+2023-10-11 20:50:08 [info] App started!
+2023-10-11 20:50:15 [info] App stops running!
+2023-10-11 20:52:57 [info] App started!
+2023-10-11 20:53:14 [info] App stops running!

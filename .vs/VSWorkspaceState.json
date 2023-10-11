@@ -3,8 +3,8 @@
     "",
     "\\bin",
     "\\bin\\GUI",
-    "\\bin\\GUI\\version_info"
+    "\\bin\\GUI\\logs"
   ],
-  "SelectedNode": "\\bin\\GUI\\version_info",
+  "SelectedNode": "\\bin\\GUI\\logs\\log.txt",
   "PreviewInSolutionExplorer": false
 }
