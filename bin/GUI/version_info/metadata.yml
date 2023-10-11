@@ -1,0 +1,12 @@
+﻿Version: 1.0.0.1
+CompanyName: XenonTech
+FileDescription: "支援批量檔案、資料夾的多行文本替換工具"
+InternalName: Find and Replace Tool
+LegalCopyright: © XenonTech Company. All rights reserved.
+OriginalFilename: mainGui.exe
+ProductName: Find and Replace Tool
+Translation:
+  - langID: 0
+    charsetID: 1200
+  - langID: 1033
+    charsetID: 1252
