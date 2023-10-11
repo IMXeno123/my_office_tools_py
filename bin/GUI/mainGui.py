@@ -23,10 +23,14 @@ class mainGui(ttk.Frame):
             path_1 = imgpath / val
             self.photoimages.append(ttk.PhotoImage(name=key, file=path_1))
         db.creat_settings()
-        self.all_settings = db.all_data()
+        self.all_settings = db.all_data()           # All settings
         path_2 = self.all_settings[0]["path"]
+        theme_ = self.all_settings[1]["theme"]
+        
         self.pack(fill=BOTH, expand=YES)
         self.style = ttk.Style()
+        self.style.theme_use(theme_)
+        
         self.path_var = ttk.StringVar(value=path_2)
         self.find_txt_var = ttk.StringVar(value="") # find
         self.repalce_txt_var = ttk.StringVar(value="") # replace
@@ -70,6 +74,7 @@ class mainGui(ttk.Frame):
     def changeTheme(self, event):
             t = self.cbo.get()
             self.style.theme_use(t)
+            db.change_settings(self.all_settings, t, 1, "theme")
             self.theme_cbo.selection_clear()    
 
     def leftFrame(self):
@@ -167,7 +172,7 @@ class mainGui(ttk.Frame):
         btn.pack(side=LEFT, padx=5)
         
     def createHelpMessage(self):
-        Messagebox.ok(title="使用提示", 
+        mb = Messagebox.ok(title="使用提示", 
                       alert=True,
                       message="""Tip: 
 支持正則表達式搜尋喔 :)
@@ -193,7 +198,6 @@ class mainGui(ttk.Frame):
 if __name__ == "__main__":
     app = ttk.Window(
         title = "Global Text Replace Tool v0.0.1", 
-        themename = "darkly", 
         size=(800,430),
         resizable = (False, False)
         )
