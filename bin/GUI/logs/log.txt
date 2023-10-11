@@ -57,3 +57,23 @@
 2023-10-11 11:34:01 [info] set theme as "superhero"
 2023-10-11 11:34:03 [info] set theme as "cyborg"
 2023-10-11 11:35:51 [info] App stops running!
+2023-10-11 11:39:42 [info] App started!
+2023-10-11 11:42:41 [info] 替換成功!
+2023-10-11 11:42:41 [info] "E:\3D Objects\New folder\New Text Document - Copy (2).md"
+[info] "E:\3D Objects\New folder\New Text Document - Copy.txt"
+[info] "E:\3D Objects\New folder\New Text Document.txt"
+[info] "E:\3D Objects\New folder\New folder\New Text Document - Copy (2).md"
+[info] "E:\3D Objects\New folder\New folder\New Text Document - Copy.txt"
+[info] "E:\3D Objects\New folder\New folder\New Text Document.txt"
+[info] 有6個檔案替換成功!
+
+2023-10-11 11:46:41 [info] 替換成功!
+2023-10-11 11:46:41 [info] "E:\3D Objects\New folder\New Text Document - Copy (2).md"
+[info] "E:\3D Objects\New folder\New Text Document - Copy.txt"
+[info] "E:\3D Objects\New folder\New Text Document.txt"
+[info] "E:\3D Objects\New folder\New folder\New Text Document - Copy (2).md"
+[info] "E:\3D Objects\New folder\New folder\New Text Document - Copy.txt"
+[info] "E:\3D Objects\New folder\New folder\New Text Document.txt"
+[info] 有6個檔案替換成功!
+
+2023-10-11 11:47:00 [info] App stops running!
