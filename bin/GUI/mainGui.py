@@ -234,7 +234,7 @@ if __name__ == "__main__":
     theme_ = db.all_data()[1]["theme"]
     app = ttk.Window(
         title = "Find and Replace Tool v1.0.0.3", 
-        size=(800,430),
+        size=w_size,
         resizable = (False, False),
         themename=theme_,
         position=(position_width, position_height),
