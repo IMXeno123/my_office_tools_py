@@ -234,11 +234,10 @@ if __name__ == "__main__":
         size=(800,430),
         resizable = (False, False),
         themename=theme_,
-        iconphoto=f"{env_path}/assets/TW_icon_anniversary_007_400pix.png"
+        iconphoto=f"{env_path}/assets/TW_icon_anniversary_007_64pix.png"
         )
     # app.position_center()
     mainGui(app)
-    # app.iconbitmap(f"{env_path}/assets/dora.ico")
     app.mainloop()
     creat_log('[info] App stops running!', env_path)
     
