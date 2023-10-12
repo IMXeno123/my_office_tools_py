@@ -23,7 +23,6 @@ class mainGui(ttk.Frame):
         for key, val in image_files.items():
             path_1 = imgpath / val
             self.photoimages.append(ttk.PhotoImage(name=key, file=path_1))
-        db.creat_settings()
         self.all_settings = db.all_data()           # All settings
         path_2 = self.all_settings[0]["path"]
         
@@ -231,6 +230,7 @@ if __name__ == "__main__":
     w_size = (800,430)
     position_width = int((info.current_w-w_size[0])/2)
     position_height = int((info.current_h-w_size[1])/2)
+    db.creat_settings()
     theme_ = db.all_data()[1]["theme"]
     app = ttk.Window(
         title = "Find and Replace Tool v1.0.0.3", 
