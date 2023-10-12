@@ -1,0 +1,3 @@
+2023-10-11 21:30:49 [info] App started!
+2023-10-11 21:30:59 [info] App started!
+2023-10-11 21:31:02 [info] App stops running!
