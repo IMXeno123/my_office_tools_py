@@ -229,15 +229,15 @@ if __name__ == "__main__":
     pygame.init()
     info = pygame.display.Info()
     w_size = (800,430)
-    screen_width = int((info.current_w-w_size[0])/2)
-    screen_height = int((info.current_h-w_size[1])/2)
+    position_width = int((info.current_w-w_size[0])/2)
+    position_height = int((info.current_h-w_size[1])/2)
     theme_ = db.all_data()[1]["theme"]
     app = ttk.Window(
-        title = "Find and Replace Tool v1.0.0.2", 
+        title = "Find and Replace Tool v1.0.0.3", 
         size=(800,430),
         resizable = (False, False),
         themename=theme_,
-        position=(screen_width, screen_height),
+        position=(position_width, position_height),
         iconphoto=f"{env_path}/assets/TW_icon_anniversary_007_64pix.png"
         )
     # app.position_center()
