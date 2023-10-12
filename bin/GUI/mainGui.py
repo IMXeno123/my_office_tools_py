@@ -1,4 +1,5 @@
 ﻿import ttkbootstrap as ttk
+import pygame
 from pathlib import Path
 from ttkbootstrap.dialogs import Messagebox
 from tkinter.filedialog import askdirectory
@@ -25,11 +26,9 @@ class mainGui(ttk.Frame):
         db.creat_settings()
         self.all_settings = db.all_data()           # All settings
         path_2 = self.all_settings[0]["path"]
-        # theme_ = self.all_settings[1]["theme"]
         
         self.pack(fill=BOTH, expand=YES)
         self.style = ttk.Style()
-        # self.style.theme_use(theme_)
         
         self.path_var = ttk.StringVar(value=path_2)
         self.find_txt_var = ttk.StringVar(value="") # find_var
@@ -227,13 +226,18 @@ class mainGui(ttk.Frame):
 
 if __name__ == "__main__":
     creat_log('[info] App started!', env_path)
-    all_settings = db.all_data()
-    theme_ = all_settings[1]["theme"]
+    pygame.init()
+    info = pygame.display.Info()
+    w_size = (800,430)
+    screen_width = int((info.current_w-w_size[0])/2)
+    screen_height = int((info.current_h-w_size[1])/2)
+    theme_ = db.all_data()[1]["theme"]
     app = ttk.Window(
         title = "Find and Replace Tool v1.0.0.2", 
         size=(800,430),
         resizable = (False, False),
         themename=theme_,
+        position=(screen_width, screen_height),
         iconphoto=f"{env_path}/assets/TW_icon_anniversary_007_64pix.png"
         )
     # app.position_center()

@@ -3,8 +3,9 @@
     "",
     "\\bin",
     "\\bin\\GUI",
+    "\\bin\\GUI\\assets",
     "\\bin\\GUI\\logs"
   ],
-  "SelectedNode": "\\bin\\GUI\\logs\\log.txt",
+  "SelectedNode": "\\bin\\GUI\\mainGui.py",
   "PreviewInSolutionExplorer": false
 }
