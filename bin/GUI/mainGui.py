@@ -234,11 +234,11 @@ if __name__ == "__main__":
     theme_ = db.all_data()[1]["theme"]
     app = ttk.Window(
         title = "Find and Replace Tool v1.0.0.3", 
-        size=w_size,
+        size = w_size,
         resizable = (False, False),
-        themename=theme_,
-        position=(position_width, position_height),
-        iconphoto=f"{env_path}/assets/TW_icon_anniversary_007_64pix.png"
+        themename = theme_,
+        position = (position_width, position_height),
+        iconphoto = f"{env_path}/assets/TW_icon_anniversary_007_64pix.png"
         )
     # app.position_center()
     mainGui(app)
