@@ -2,10 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\bin",
-    "\\bin\\GUI",
-    "\\bin\\GUI\\assets",
-    "\\bin\\GUI\\logs"
+    "\\bin\\GUI"
   ],
-  "SelectedNode": "\\bin\\GUI\\mainGui.py",
+  "SelectedNode": "\\bin\\gui_painter.py",
   "PreviewInSolutionExplorer": false
 }
