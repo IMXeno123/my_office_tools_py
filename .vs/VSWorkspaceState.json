@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\bin",
-    "\\bin\\C"
+    "\\bin"
   ],
-  "SelectedNode": "\\bin\\C\\main.c",
+  "SelectedNode": "\\bin\\C",
   "PreviewInSolutionExplorer": false
 }
