@@ -4,6 +4,6 @@
     "\\bin",
     "\\bin\\GUI"
   ],
-  "SelectedNode": "\\bin\\gui_painter.py",
+  "SelectedNode": "\\bin\\GUI\\mainGui.py",
   "PreviewInSolutionExplorer": false
 }
