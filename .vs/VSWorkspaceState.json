@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\bin",
-    "\\bin\\C"
+    "\\bin\\GUI",
+    "\\bin\\GUI\\logs"
   ],
-  "SelectedNode": "\\bin\\C\\main.c",
+  "SelectedNode": "\\bin\\GUI\\logs\\log.txt",
   "PreviewInSolutionExplorer": false
 }
