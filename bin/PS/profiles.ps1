@@ -7,7 +7,7 @@ function music {
 		[string]$str1
 	)
 	$qqmusicpath = ".\Music.exe"
-	if ($str1 -eq "--help") {
+	if ($str1 -eq "--help" -or $str1 -eq "--h" -or $str1 -eq "help") {
 		echo "No music No life! Trun music on! "
 	} else {
 		Start-Process $qqmusicpath
