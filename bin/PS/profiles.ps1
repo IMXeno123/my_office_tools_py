@@ -1,4 +1,4 @@
-oh-my-posh init pwsh --config 'C:\Users\zzxxe\AppData\Local\Programs\oh-my-posh\themes\blue-owl.omp.json' | Invoke-Expression
+oh-my-posh init pwsh --config 'C:\Users\username\AppData\Local\Programs\oh-my-posh\themes\blue-owl.omp.json' | Invoke-Expression
 
 # my code!
 function music {
