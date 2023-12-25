@@ -11,6 +11,7 @@ function music {
 		echo "No music No life! Trun music on! "
 	} else {
 		Start-Process $qqmusicpath
-		echo "Music Started!"
+		Write-Output "Music Started!"
+		return $true
 	}
 }
