@@ -2,8 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\bin",
-    "\\bin\\GUI",
-    "\\bin\\GUI\\logs"
+    "\\bin\\PS"
   ],
+  "SelectedNode": "\\bin\\PS\\profiles.ps1",
   "PreviewInSolutionExplorer": false
 }
