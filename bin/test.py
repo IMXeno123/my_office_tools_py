@@ -1,7 +1,12 @@
-﻿
-str1 = input()
-b = 0
-for i in range(len(str1)):  # [0,1,2,3,4,5]
-   if str1[i] == "a": # 获取str1里面是i索引号的东西  str = string = 字符串
-        b+=1
-print(b)
+﻿import turtle as t
+s = t.Pen()
+s.pencolor("green")
+s.pensize(10)
+length = [60*2,100*2,140*2]
+s.left(180/3)
+for i in range(3):
+    for j in range(3):
+        s.forward(length[i])
+        s.left(180-60)
+s.hideturtle()
+t.done()
