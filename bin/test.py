@@ -1,6 +1,7 @@
-﻿import random
-my_list = ["d","b","d","b","d","b","d","b","d"]
-while True:
-    j = random.randint(0,8)
-    print(my_list[j])
-    a = input()
+﻿
+str1 = input()
+b = 0
+for i in range(len(str1)):  # [0,1,2,3,4,5]
+   if str1[i] == "a": # 获取str1里面是i索引号的东西  str = string = 字符串
+        b+=1
+print(b)
