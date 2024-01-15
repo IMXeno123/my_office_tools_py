@@ -2,11 +2,12 @@
 s = t.Pen()
 s.pencolor("green")
 s.pensize(10)
-length = [60*2,100*2,140*2]
-s.left(180/3)
+j = 60
+s.left(60)
 for i in range(3):
-    for j in range(3):
-        s.forward(length[i])
-        s.left(180-60)
+    for k in range(3):
+        s.forward(j)
+        s.left(120)
+    j += 40
 s.hideturtle()
 t.done()
