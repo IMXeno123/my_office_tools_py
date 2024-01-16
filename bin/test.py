@@ -1,13 +1,13 @@
 ﻿import turtle as t
-s = t.Pen()
-s.pencolor("green")
-s.pensize(10)
-j = 60
-s.left(60)
+Pen1 = t.Pen()
+Pen1.pencolor("red")
+Pen1.pensize(3)
 for i in range(3):
-    for k in range(3):
-        s.forward(j)
-        s.left(120)
-    j += 40
-s.hideturtle()
+    for j in range(2):
+        Pen1.forward(100)
+        Pen1.left(90)
+        Pen1.forward(200)
+        Pen1.left(90)
+    Pen1.left(120)
+Pen1.hideturtle()
 t.done()
