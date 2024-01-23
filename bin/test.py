@@ -1,10 +1,10 @@
-﻿if 0:
-    pass
-elif 0:
-    pass
-elif 0:
-    pass
-elif 0:
-    pass
-else:
-    pass
+﻿import turtle as tt
+pen1 = tt.Pen()
+pen1.pensize(10)
+pen1.pencolor("orange")
+pen1.fillcolor("gold")
+pen1.begin_fill()
+pen1.circle(50)
+pen1.end_fill()
+pen1.hideturtle()
+tt.done()
