@@ -83,18 +83,74 @@
 #     print('请你再接再厉')
     
 
-sentence = input()
-#建立一个空字符串用来存储反过来的字符串
-sentence2 = ''
-#2个字符以及一下的数据不算回文
-if len(sentence) > 2:
-    #将字符串从后到前加到空字符串里
-    for i in range(len(sentence)-1, -1, -1):
-        sentence2 += sentence[i]
-    if sentence2 == sentence:
-        print(1)
-    else:
-        print(0)
-else:
-    print('不够长')
+# sentence = input()
+# #建立一个空字符串用来存储反过来的字符串
+# sentence2 = ''
+# #2个字符以及一下的数据不算回文
+# if len(sentence) > 2:
+#     #将字符串从后到前加到空字符串里
+#     for i in range(len(sentence)-1, -1, -1):
+#         sentence2 += sentence[i]
+#     if sentence2 == sentence:
+#         print(1)
+#     else:
+#         print(0)
+# else:
+#     print('不够长')
+
+# import turtle as tt
+# pen1 = tt.Pen()
+# color_list = ['red', 'orange', 'yellow', 'green', 
+#               'cyan', 'blue', 'purple', 'Magenta']
+# pen1.pensize(10)
+# for i in range(8):
+#     pen1.pencolor(color_list[i])
+#     for j in range():
+#         j += 1
+#         pen1.pensize(j)
+#         pen1.forward(j*10)
+#         pen1.right(90)
+#         pen1.forward(j*10)
+#         pen1.right(180-45)
+#         pen1.goto(0,0)
+#         pen1.right(45*3)
+#     pen1.right(45)
+# pen1.hideturtle()
+# tt.done()
+
+
+# #海龟画图
+# import turtle
+# t = turtle.Pen()
+# #储存颜色列表
+# colorlist = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple', 'Magenta']
+# #每层递进
+# for j in range(10,101,10):
+#     #每层8瓣风车叶片
+#     for i in range(8):
+#         #使用轮换的颜色
+#         t.pencolor(colorlist[i%8])
+#         #使用和本层相关的画笔粗细
+#         t.pensize(j//10)
+#         t.forward(j)
+#         t.right(90)
+#         t.forward(j)
+#         t.goto(0,0)
+#         #一片叶子45度
+#         t.left(45)
+# #隐藏画笔
+# t.hideturtle()
+# turtle.done()
+import turtle as tt
+pen1 = tt.Pen()
+colorlist = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple', 'Magenta']
+pen1.pensize(10)
+for i in range(8):
+    pen1.pencolor(colorlist[i])
+for j in range(10):
+    j += 1
+    pen1.forward(j)
+    pen1.right(90)
+    pen1.forward(j*10)
+    
     
