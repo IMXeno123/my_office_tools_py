@@ -147,10 +147,13 @@ colorlist = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple', 'Mage
 pen1.pensize(10)
 for i in range(8):
     pen1.pencolor(colorlist[i])
-for j in range(10):
-    j += 1
-    pen1.forward(j)
-    pen1.right(90)
-    pen1.forward(j*10)
+    for j in range(10):
+        j += 1
+        pen1.forward(j)
+        pen1.right(90)
+        pen1.forward(j*10)
+    pen1.right((180+5*180)/8)
+pen1.hideturtle()
+tt.done()
     
     
